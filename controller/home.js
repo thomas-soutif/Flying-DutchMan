@@ -1,13 +1,12 @@
-function Home_Controller()
-{
+class Home_Controller extends Master_Controller {
 
-    console.log("i'm in home conroller");
-    //console.log(window.location.pathname);
+    constructor() {
+        super();
+    }
 
-    //console.log(document.location.pathname);
-    $("<html>").load("./views/head.html");
-
-
-
-
+    index(){ // The default function call if there is no action on the page (usually call only to load the page once
+        console.log("i'm in home controller");
+        this.start_page(translate_to_sw.string_welcome);
+        this.end_page();
+    }
 }
