@@ -8,15 +8,30 @@
     <script type="text/javascript" src="./script/index.js"></script>
 
 
-test
+
 
 <script>
 
-    var destination = getUrlVars()["url"];
-    var controller = destination += "_Controller";
-    var controller_obj = eval("new " + controller + "()");
-    controller_obj.index();
+    var url = getUrlVars()["url"];
 
+    var action = getUrlVars()["action"];
+    var controller = url += "_Controller";
+
+    var controller_obj = eval("new " + controller + "()");
+    if(action == null){
+        controller_obj.index();
+    }
+    else{
+        controller_obj.index();
+        eval("controller_obj" + "." + action + "()");
+
+
+    }
+
+    $(document).ready(function () { // To change dynamically content of something in the DOM, need to wait all is load
+        $("body").text("Controller :").append(url).append("<br />");
+        $("body").append("Action :").append(action);
+    });
 
 </script>
 

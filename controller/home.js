@@ -9,4 +9,8 @@ class Home_Controller extends Master_Controller {
         this.start_page(translate_to_sw.string_welcome);
         this.end_page();
     }
+
+    test_action(){
+        console.log("I'm an action from Home controller");
+    }
 }
