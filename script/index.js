@@ -5,3 +5,10 @@ function getUrlVars() {
     });
     return vars;
 }
+
+function translate(str,lang){
+
+    let str_lang_to_translate = "translate_to_" + lang;
+    return eval(str_lang_to_translate + "." + str);
+
+}
