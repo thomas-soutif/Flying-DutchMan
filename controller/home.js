@@ -5,8 +5,8 @@ class Home_Controller extends Master_Controller {
     }
 
     index(){ // The default function call if there is no action on the page (usually call only to load the page once
-        console.log("i'm in home controller");
-        this.start_page(translate("string_welcome","sw"));
+        console.log("i'm in home controller")
+        this.start_page(translate("string_welcome","sw"),"home");
         this.end_page();
     }
 
