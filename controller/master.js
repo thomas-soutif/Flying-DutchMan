@@ -3,11 +3,7 @@ class Master_Controller
 
     start_page(title) {
 
-        $.get("./views/head.html", function( my_var ) { // Function to add to the DOM from a file. Add in the head and not replace eveyrthing
-            console.log(my_var)
-        $("head").append(my_var)
-        });
-
+        this.addHTMLFileToDOM("./views/head.html","head");
        //$("head").load('./views/head.html'); // Another wait to load html data (but replace all the content of head)
         console.log(title);
 
@@ -15,16 +11,17 @@ class Master_Controller
             $("title").text(title);
         });
 
-        }
-
-
+    }
 
 
     end_page() {
+        this.addHTMLFileToDOM("./views/footer.html","html");
+    }
 
-        $.get("./views/footer.html", function( my_var ) { // Function to add to the DOM from a file. Add in the head and not replace eveyrthing
-            console.log(my_var)
-            $("html").append(my_var)
+
+    addHTMLFileToDOM(source_html_code,destination){ // Function to add to the DOM from a file.
+        $.get(source_html_code, function( html_code ) {
+            $(destination).append(html_code);
         });
 
     }
