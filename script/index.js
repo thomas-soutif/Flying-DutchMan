@@ -12,3 +12,9 @@ function translate(str,lang){
     return eval(str_lang_to_translate + "." + str);
 
 }
+
+function ajaxCall(action){
+
+    return eval("controller_obj" + "." + action + "()");
+
+}
