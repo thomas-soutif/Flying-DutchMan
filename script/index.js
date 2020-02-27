@@ -38,13 +38,11 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-    var user=getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = document.getElementsByname('fname');
-        if (user != "" && user != null) {
-            setCookie("username", user.value, 30);
-        }
-    }
+  var user=getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+     user = $("#fname").val();
+     setCookie("username", user, 30);
+  }
 }
