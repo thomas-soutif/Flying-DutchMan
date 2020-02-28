@@ -17,8 +17,10 @@ class Table_Controller extends Master_Controller {
 
     ajax_book_table() {
 
-        console.log("do something for booking...")
-        return 1;
+        console.log("do something on the server side for booking...");
+        console.log("Need to store on the database that this table is now busy");
+        return this.createAjaxResponse(null,0);
+
 
     }
 
