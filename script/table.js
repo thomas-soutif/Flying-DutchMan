@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    alert("The table.js file is load correctly");
+
 
 
     $("#book_2").click(function () {
