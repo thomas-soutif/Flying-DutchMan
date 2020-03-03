@@ -26,11 +26,12 @@ class Master_Controller
 
     }
 
-    createAjaxResponse(data,error)
+    createAjaxResponse(data,error,messageError)
     {
         return {
             "data" : data,
-            "error" : error
+            "error" : error,
+            "messageError" : messageError
         };
     }
 
