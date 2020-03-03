@@ -24,9 +24,9 @@ function translate(str,lang){
 
 }
 
-function ajaxCall(action){
+function ajaxCall(action,parameter){
 
-    return eval("controller_obj" + "." + action + "()");
+    return eval("controller_obj" + "." + action + "(" + JSON.stringify(parameter) + ")" + ";" );
 
 }
 

@@ -49,7 +49,7 @@ class Master_Controller
         });
     }
 
-    loadDefaultDatabaseInLocalStorageIfNotExist(variable_name)
+    static loadDefaultDatabaseInLocalStorageIfNotExist(variable_name) // Private
     {
         if(localStorage.getItem(variable_name) == null)
         {
@@ -59,6 +59,7 @@ class Master_Controller
 
     static getDatabase(variable_name)
     {
+        this.loadDefaultDatabaseInLocalStorageIfNotExist(variable_name);
         return JSON.parse(localStorage.getItem(variable_name));
     }
 
