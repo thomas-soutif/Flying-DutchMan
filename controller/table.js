@@ -15,11 +15,27 @@ class Table_Controller extends Master_Controller {
         console.log("I'm an action from Table controller");
     }
 
-    ajax_book_table() {
+    ajax_book_table(parameter) {
 
         console.log("do something on the server side for booking...");
         console.log("Need to store on the database that this table is now busy");
-        return this.createAjaxResponse(null,0);
+        let error = bookTableByNum(parameter.tableNum,parameter.userId);
+        let errorMessage ="";
+        if(error){ // If there is an error
+            switch (error) {
+                case 1:
+                    errorMessage = "The table is already booked.";
+                    break;
+                case 2 :
+                    break;
+                default:
+                    break;
+
+            }
+            return this.createAjaxResponse(null,error,errorMessage);
+        }
+        // no error, we can return the new tables information for example
+        return this.createAjaxResponse(getAllTablesInformations(),0,null);
 
 
     }
