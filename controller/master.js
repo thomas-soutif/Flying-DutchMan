@@ -65,6 +65,7 @@ class Master_Controller
 
     static updateDatabase(variable_name,new_data)
     {
+        this.loadDefaultDatabaseInLocalStorageIfNotExist(variable_name);
         localStorage.setItem(variable_name,JSON.stringify(new_data));
     }
 
