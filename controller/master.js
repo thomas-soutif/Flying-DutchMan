@@ -34,4 +34,37 @@ class Master_Controller
         };
     }
 
+    loadScript(sourceFile) // for the moment not use because of conflict
+    {
+       /* $.getScript( sourceFile )
+            .done(function( script, textStatus ) {
+            })
+            .fail(function( jqxhr, settings, exception ) {
+               console.log("Fail to load the script from " + sourceFile);
+            });*/
+        $.ajax({
+            async: false,
+            url: sourceFile,
+            dataType: "script"
+        });
+    }
+
+    loadDefaultDatabaseInLocalStorageIfNotExist(variable_name)
+    {
+        if(localStorage.getItem(variable_name) == null)
+        {
+            localStorage.setItem(variable_name,JSON.stringify(variable_name));
+        }
+    }
+
+    static getDatabase(variable_name)
+    {
+        return JSON.parse(localStorage.getItem(variable_name));
+    }
+
+    static updateDatabase(variable_name,new_data)
+    {
+        localStorage.setItem(variable_name,JSON.stringify(new_data));
+    }
+
 }

@@ -8,6 +8,7 @@ class Table_Controller extends Master_Controller {
         console.log("i'm in Table controller");
         this.start_page(translate("sentence_ChooseYourTable", "sw"), "table");
         this.addHTMLFileToDOM("./views/table/table_selection.html", "body");
+        this.loadDefaultDatabaseInLocalStorageIfNotExist(test_data_base);
         this.end_page();
     }
 
@@ -19,9 +20,14 @@ class Table_Controller extends Master_Controller {
 
         console.log("do something on the server side for booking...");
         console.log("Need to store on the database that this table is now busy");
-        return this.createAjaxResponse(null,0);
+
 
 
     }
 
+    someTestWithDb()
+    {
+        changeUsersPhoneByName("jorass","000004");
+        return this.createAjaxResponse(getUsersByName("jorass"),0);
+    }
 }

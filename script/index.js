@@ -1,3 +1,14 @@
+$(document).ready(function () {
+
+    $(".resetLocalStorage").click(function () {
+        resetLocalStorage();
+        alert("Databse reset to default");
+    })
+
+
+
+
+});
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -51,4 +62,8 @@ function checkCookie() {
      user = $("#fname").val();
      setCookie("username", user, 30);
   }
+}
+
+function resetLocalStorage() {
+    localStorage.clear();
 }

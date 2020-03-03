@@ -48,6 +48,11 @@
     text-decoration: none;
 }
 
+/* Footer */
+.resetLocalStorage {
+    font-style: italic;
+}
+
 /* Structure for the page*/
 .pagecontainer{
     width: 960px;
