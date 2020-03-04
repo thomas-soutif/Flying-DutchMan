@@ -5,13 +5,18 @@ $(document).ready(function () {
         alert("Databse reset to default");
     });
 
-    setDefaultLanguageIfNotExist("en");
-    setBackgroundColorForLanguageLink("yellow");
-
-    $(".languageSelection").click(function () {
+    $(".languageSelection").click(function (e) {
+        e.preventDefault();
         let lang = $(this).data("lang");
         setLanguage(lang);
+        translateAllDOM();
+        setBackgroundColorForLanguageLink("yellow");
+
     });
+
+    setDefaultLanguageIfNotExist("en");
+    setBackgroundColorForLanguageLink("yellow");
+    translateAllDOM();
 
 });
 function getUrlVars() {
@@ -94,9 +99,15 @@ function getCurrentLanguage()
 function setBackgroundColorForLanguageLink(color) {
 
     let id = "#language_" + getCurrentLanguage();
+    $('.languageSelection').each(function (index) {
+        $(this).css("background-color","");
+        console.log($(this));
+    })
+
     $(id).css("background-color",color);
 }
 
+/*
 function translateAllDOM(mapElement){
 
     console.log(mapElement);
@@ -104,5 +115,12 @@ function translateAllDOM(mapElement){
     {
         $(mapElement.map[i].element).text(translate(mapElement.map[i].key));
     }
+
+}*/
+function translateAllDOM(){
+
+    $('.translate').each(function (index) {
+        $(this).text(translate($(this).data("translate-key")));
+    })
 
 }

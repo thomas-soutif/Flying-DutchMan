@@ -5,5 +5,10 @@ var translate_to_sw = {
     "string_Available" : "Tillgänglig",
     "string_Busy" : "Upptagen",
     "sentence_TableNumber" : "Tabell nummer",
-    "string_book" : "Bok"
+    "string_book" : "Bok",
+    "string_Home" : "Hem",
+    "string_Table" : "Tabell",
+    "string_Bar" : "Bar",
+    "string_About" : "Handla om",
+    "string_Login" : "Logga in"
 };
