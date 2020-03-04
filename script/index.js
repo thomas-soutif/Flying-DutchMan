@@ -3,8 +3,16 @@ $(document).ready(function () {
     $(".resetLocalStorage").click(function () {
         resetLocalStorage();
         alert("Databse reset to default");
-    })
+    });
 
+    $(".languageSelection").click(function () {
+        let lang = $(this).data("lang");
+        setLanguage(lang);
+
+    });
+
+    setDefaultLanguageIfNotExist("en");
+    setBackgroundColorForLanguageLink("yellow");
 
 
 
@@ -17,8 +25,8 @@ function getUrlVars() {
     return vars;
 }
 
-function translate(str,lang){
-
+function translate(str){
+    let lang = getCurrentLanguage();
     let str_lang_to_translate = "translate_to_" + lang;
     return eval(str_lang_to_translate + "." + str);
 
@@ -66,4 +74,36 @@ function checkCookie() {
 
 function resetLocalStorage() {
     localStorage.clear();
+}
+
+function setLanguage(lang)
+{
+    sessionStorage.setItem("current_lang",lang);
+}
+
+function setDefaultLanguageIfNotExist(str_lang) {
+    if(sessionStorage.getItem("current_lang") == null)
+    {
+        sessionStorage.setItem("current_lang",str_lang);
+    }
+    setBackgroundColorForLanguageLink("yellow");
+}
+
+function getCurrentLanguage()
+{
+    return sessionStorage.getItem("current_lang");
+}
+function setBackgroundColorForLanguageLink(color) {
+    let id = "#language_" + sessionStorage.getItem("current_lang");
+    $(id).css("background-color",color);
+}
+
+function translateAllDOM(mapElement){
+
+    console.log(mapElement);
+    for (let i = 0; i < mapElement.map.length; i++)
+    {
+        $(mapElement.map[i].element).text(translate(mapElement.map[i].key));
+    }
+
 }

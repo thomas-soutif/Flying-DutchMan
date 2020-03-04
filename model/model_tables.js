@@ -18,7 +18,9 @@ function bookTableByNum(tableNum,userId)
             masterController.updateDatabase(Table_informations_data,tables_data);
             return 0;
         };
+
     };
+    return 2;
 }
 
 function getAllTablesInformations()
