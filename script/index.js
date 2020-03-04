@@ -5,16 +5,13 @@ $(document).ready(function () {
         alert("Databse reset to default");
     });
 
-    $(".languageSelection").click(function () {
-        let lang = $(this).data("lang");
-        setLanguage(lang);
-
-    });
-
     setDefaultLanguageIfNotExist("en");
     setBackgroundColorForLanguageLink("yellow");
 
-
+    $(".languageSelection").click(function () {
+        let lang = $(this).data("lang");
+        setLanguage(lang);
+    });
 
 });
 function getUrlVars() {
@@ -86,15 +83,17 @@ function setDefaultLanguageIfNotExist(str_lang) {
     {
         sessionStorage.setItem("current_lang",str_lang);
     }
-    setBackgroundColorForLanguageLink("yellow");
+
 }
 
 function getCurrentLanguage()
 {
+    setDefaultLanguageIfNotExist("en");
     return sessionStorage.getItem("current_lang");
 }
 function setBackgroundColorForLanguageLink(color) {
-    let id = "#language_" + sessionStorage.getItem("current_lang");
+
+    let id = "#language_" + getCurrentLanguage();
     $(id).css("background-color",color);
 }
 

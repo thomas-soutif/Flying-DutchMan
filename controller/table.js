@@ -41,4 +41,11 @@ class Table_Controller extends Master_Controller {
 
 
     }
+
+    ajax_get_TablesInformation() {
+
+        return this.createAjaxResponse(getAllTablesInformations(), 0, null);
+
+    }
+
 }
