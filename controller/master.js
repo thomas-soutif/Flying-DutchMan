@@ -52,22 +52,22 @@ class Master_Controller
 
     static loadDefaultDatabaseInLocalStorageIfNotExist(variable_name) // Private
     {
-        if(localStorage.getItem(variable_name) == null)
+        if(localStorage.getItem(Object.keys(variable_name)[0]) == null)
         {
-            localStorage.setItem(variable_name,JSON.stringify(variable_name));
+            localStorage.setItem(Object.keys(variable_name)[0], JSON.stringify(variable_name));
         }
     }
 
     static getDatabase(variable_name)
     {
         this.loadDefaultDatabaseInLocalStorageIfNotExist(variable_name);
-        return JSON.parse(localStorage.getItem(variable_name));
+        return JSON.parse(localStorage.getItem(Object.keys(variable_name)[0]));
     }
 
-    static updateDatabase(variable_name,new_data)
+    static updateDatabase(variable_name, new_data)
     {
         this.loadDefaultDatabaseInLocalStorageIfNotExist(variable_name);
-        localStorage.setItem(variable_name,JSON.stringify(new_data));
+        localStorage.setItem(Object.keys(variable_name)[0], JSON.stringify(new_data));
     }
 
 }
