@@ -1,8 +1,8 @@
 function getAllBeverages() {
-    let masterController = Master_Controller;
-    let beverages_db = masterController.getDatabase(Beverage_en_data);
 
-    var allBeverages = [];
+    let beverages_db = getDatabase(Beverage_en_data);
+
+    let allBeverages = [];
 
     for (let i = 0; i < beverages_db.spirits.length; i++) {
         let beverage = {
