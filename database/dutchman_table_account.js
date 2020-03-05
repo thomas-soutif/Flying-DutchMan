@@ -1,6 +1,10 @@
-var Users_account_data = {
+var Account_data = {
 
 account: [
+    {
+        "user_id": "100",
+        "creditSEK" : "1000"
+    },
     {
         "user_id": "2",
         "creditSEK" : "300"

@@ -10,5 +10,9 @@ var translate_to_en = {
     "string_Table" : "Table",
     "string_Bar" : "Bar",
     "string_About" : "About",
-    "string_Login" : "Login"
+    "string_Login" : "Login",
+    "string_SignIn" : "Sing in",
+    "string_Username" : "Username",
+    "string_Password" : "Password",
+    "sentence_YouAreAlreadyLoginWithTheUserName" : "You are already login with the username"
 };
