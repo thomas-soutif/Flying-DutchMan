@@ -48,4 +48,13 @@ class Table_Controller extends Master_Controller {
 
     }
 
+    async ajax_get_all_beverages() {
+        let beverages = await getAllBeverages();
+        return this.createAjaxResponse(beverages, 0, "");
+    }
+
+    async ajax_get_beverages_by_strength(strength) {
+        let beverages = await getBeveragesByStrength(strength);
+        return this.createAjaxResponse(beverages, 0, "");
+    }
 }
