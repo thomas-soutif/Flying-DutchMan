@@ -1,6 +1,14 @@
 var Users_data = {
     users:
-        [{
+        [{  "user_id": "100",
+            "credentials": "3",
+            "password": "test",
+            "username": "test",
+            "first_name": "TestFirst",
+            "last_name": "TestSecond",
+            "email": "test@it.uu.se",
+            "phone": "0000000000"
+        }, {
     "user_id": "2",
     "credentials": "0",
     "password": "b690bc2447d40ea8a6f78345eb979a28",

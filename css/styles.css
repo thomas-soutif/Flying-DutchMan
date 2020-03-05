@@ -48,6 +48,11 @@
     text-decoration: none;
 }
 
+/*Login */
+.login-form{
+    text-align: center;
+}
+
 /* Footer */
 .resetLocalStorage {
     font-style: italic;

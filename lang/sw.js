@@ -10,5 +10,9 @@ var translate_to_sw = {
     "string_Table" : "Tabell",
     "string_Bar" : "Bar",
     "string_About" : "Handla om",
-    "string_Login" : "Logga in"
+    "string_Login" : "Logga in",
+    "string_SignIn" : "Logga in",
+    "string_Username" : "Användarnamn",
+    "string_Password" : "Lösenord",
+    "sentence_YouAreAlreadyLoginWithTheUserName" : "Du loggar in redan med användarnamnet"
 };

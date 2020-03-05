@@ -25,6 +25,7 @@ $(document).ready(function () {
 function checkAndUpdateStatusOfTables()
 {
     let response = ajaxCall("ajax_get_TablesInformation",null);
+    console.log(response);
     if(!response.error) // Return no error
     {
         updateStatusOfAllTable(response.data);

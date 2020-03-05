@@ -1,7 +1,7 @@
 function bookTableByNum(tableNum,userId)
 {
-    let masterController = Master_Controller;
-    let tables_data = masterController.getDatabase(Table_informations_data);
+
+    let tables_data = getDatabase("Table_informations_data");
     for (let i = 0; i < tables_data.tables.length; i++) {
         if (tables_data.tables[i].table_num === tableNum) {
             if(tables_data.tables[i].available === false)
@@ -15,7 +15,7 @@ function bookTableByNum(tableNum,userId)
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             tables_data.tables[i].booking_time = date+' '+time;
 
-            masterController.updateDatabase(Table_informations_data,tables_data);
+            updateDatabase("Table_informations_data",tables_data);
             return 0;
         };
 
@@ -25,7 +25,7 @@ function bookTableByNum(tableNum,userId)
 
 function getAllTablesInformations()
 {
-    let masterController = Master_Controller;
-    return masterController.getDatabase(Table_informations_data);
+
+    return getDatabase("Table_informations_data");
 
 }

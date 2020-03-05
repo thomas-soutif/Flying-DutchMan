@@ -64,14 +64,12 @@ function getCookie(cname) {
     return "";
 }
 
-function checkCookie() {
-  var user=getCookie("username");
-  if (user != "") {
-    alert("Welcome again " + user);
-  } else {
-     user = $("#fname").val();
-     setCookie("username", user, 30);
-  }
+function checkUserLogin() {
+    if(sessionStorage.getItem("user") == null)
+    {
+        return null;
+    }
+    return sessionStorage.getItem("user");
 }
 
 function resetLocalStorage() {
@@ -101,7 +99,6 @@ function setBackgroundColorForLanguageLink(color) {
     let id = "#language_" + getCurrentLanguage();
     $('.languageSelection').each(function (index) {
         $(this).css("background-color","");
-        console.log($(this));
     })
 
     $(id).css("background-color",color);
