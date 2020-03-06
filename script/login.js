@@ -27,7 +27,7 @@ $(document).ready(function () {
         sessionStorage.removeItem("user");
 
     });
-
+    translateAllDOM();
     tryAddUserNameText();
 
 });

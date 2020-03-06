@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    checkCookie();
 
 
-
-
+    translateAllDOM();
 
 
 

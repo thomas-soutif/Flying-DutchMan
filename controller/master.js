@@ -1,15 +1,9 @@
 class Master_Controller
 {
 
-    start_page(title,controller) {
+    start_page(controller) {
         this.addHTMLFileToDOM("./views/menu.html","body");
-       //$("head").load('./views/head.html'); // Another wait to load html data (but replace all the content of head)
-        console.log(title);
         eval('this.addHTMLFileToDOM("./views/'+controller+'/'+'head_content.html","head");');
-
-        $(document).ready(function () { // To change dynamically content of something in the DOM, need to wait all is load
-            $("title").append(title);
-        });
 
     }
 
