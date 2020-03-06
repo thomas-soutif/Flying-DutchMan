@@ -15,15 +15,23 @@ class Master_Controller
 
 
     end_page() {
-        this.addHTMLFileToDOM("./views/footer.html","html");
+        this.addHTMLFileToDOM("./views/footer.html","body");
     }
 
 
-    addHTMLFileToDOM(source_html_code,destination){ // Function to add to the DOM from a file.
-        $.get(source_html_code, function( html_code ) {
-            $(destination).append(html_code);
-        });
+     addHTMLFileToDOM(source_html_code,destination){ // Function to add to the DOM from a file.
 
+        /*$.get(source_html_code, function( html_code ) {
+            $(destination).append(html_code);
+
+        });*/
+        $.ajax({
+            url: source_html_code,// mandatory
+            method:'GET',
+            dataType: "html",
+        }).done(function (html) {
+            $(destination).append(html);
+        });
     }
 
     createAjaxResponse(data,error,errorMessage)
