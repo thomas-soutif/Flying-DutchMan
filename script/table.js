@@ -19,6 +19,7 @@ $(document).ready(function () {
     });
     translateAllDOM();
     checkAndUpdateStatusOfTables();
+    $("#menu-table").addClass("active");
 
 });
 

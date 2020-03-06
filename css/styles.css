@@ -57,6 +57,9 @@
 .resetLocalStorage {
     font-style: italic;
 }
+footer{
+    text-align: center;
+}
 
 /* Structure for the page*/
 .pagecontainer{
@@ -69,6 +72,9 @@
     overflow: hidden;
 }
 
-.body{
+body{
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
     overflow: hidden;
 }

@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
     translateAllDOM();
     tryAddUserNameText();
-
+    $("#menu-login").addClass("active");
 });
 
 function tryAddUserNameText() {
