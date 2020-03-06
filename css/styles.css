@@ -76,5 +76,138 @@ body{
     width: 960px;
     margin-right: auto;
     margin-left: auto;
+
+}
+
+/*decoration for body part*/
+.tab {
     overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.5s;
+}
+.tab button:hover {
+    background-color: #a9cac5;
+    color: white;
+}
+.tab button.active {
+    background-color: #0dbec5;
+    color: white;
+}
+.tabcontent{
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+/*order page*/
+.leftside{
+    width: 650px;
+    float: left;
+}
+.items{
+    list-style: none;
+    overflow: hidden;
+}
+.items li{
+    width: 180px;
+    float: left;
+    border: 1px solid #e6e6e6;
+    margin: 5px;
+}
+
+.items li p{
+    font-size: 12px;
+}
+.rightside{
+    overflow: hidden;
+    float: right;
+    text-align: center;
+    width: 30%;
+}
+.orderbtn{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #a9cac5;
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+}
+.orderbtn:hover{
+    background-color: #0CBEC2;
+    transition: 0.5s;
+    color: #f1f1f1;
+}
+/*for info contaiber*/
+.info-container{
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out;
+
+    will-change: opacity;
+    transform: translateZ(0);
+}
+body.modal-showing .info-container {
+    opacity: 1;
+    visibility: visible;
+}
+body.modal-showing.closing .info-container {
+    opacity: 0;
+}
+
+.info-container .infos {
+    background: #fff;
+    padding: 22px 33px;
+    max-width: 550px;
+    width: 100%;
+    border-radius: 4px;
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+
+    transition: top 0.2s ease-out, transform 0.2s ease-out;
+
+    box-shadow: 0px 0px 50px 5px #ffffff;
+    transform: translate(-50%, -50%)
+    translateZ(0)
+    scale(0.9)
+    rotateX(60deg);
+
+    /* Getting the GPU to handle it - the NEW way */
+    will-change: top, transform;
+}
+
+body.modal-showing .info-container .info {
+    top: 50%;
+    transform: translate(-50%, -50%) /* keep trick for correct positioning */
+    translateZ(0) /* Getting the GPU to handle it - the old way */
+    scale(1) /* zoom in to scale 1:1 */
+    rotateX(0);
+}
+body.modal-showing.closing .info-container .info {
+    top: 45%;
+    transform: translate(-50%, -50%) /* keep trick for correct positioning */
+    translateZ(0) /* Getting the GPU to handle it - the old way */
+    scale(0.9) /* zoom in to scale 1:1 */
+    rotateX(60deg);
+}
+.click{
+    text-decoration: none;
 }

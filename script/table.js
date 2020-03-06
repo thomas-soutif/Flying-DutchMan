@@ -9,6 +9,13 @@ $(document).ready(function () {
         {
             console.log("no error");
             updateStatusOfAllTable(response.data);
+            $(".pagecontainer").empty();
+            let parameter = {"destination" : ".pagecontainer"};
+            let response2 = ajaxCall("ajax_load_table_order_html",parameter);
+            if(!response2.error)
+            {
+                setTimeout(() => {  addListenerForOrderTable() }, 1);
+            }
 
         } else
         {
@@ -58,4 +65,68 @@ function updateStatusOfAllTable(tablesInfo)
         translateAllDOM();
 
     }
+}
+
+function addListenerForOrderTable()
+{
+
+    $("a.open-modal").on("click",function(e){
+        e.preventDefault();
+
+        $("body").addClass("modal-showing");
+    });
+
+    $(".info-container").on("click", function(e){
+        e.preventDefault();
+
+        $("body").addClass("closing");
+        $("body").removeClass("modal-showing closing");
+        let transEnd = "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd";
+
+        $("info-container.info").one(transEnd, function(){
+
+
+            $(this).off(transEnd);
+        });
+    });
+
+    $(".infos").on("click", function(e) {
+        e.stopPropagation();
+        return true;
+    });
+
+    $("#openBeers").click(function (event) {
+        console.log("hey");
+        openArea(event, 'Beers');
+    });
+
+    $("#openVIP").click(function (event) {
+        openArea(event, 'VIPs');
+    });
+
+    function openArea(evt, areaName) {
+        var i, tabContent, tabLinks;
+
+        tabContent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+
+        tabLinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(areaName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function increaseValue(){
+        document.getElementById("numberPlus").stepUp(1);
+    }
+
+    function decreaseValue(){
+        document.getElementById("numberPlus").stepUp(-1);
+    }
+
 }

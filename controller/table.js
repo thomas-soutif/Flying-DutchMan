@@ -57,4 +57,10 @@ class Table_Controller extends Master_Controller {
         let beverages = await getBeveragesByStrength(strength);
         return this.createAjaxResponse(beverages, 0, "");
     }
+
+    ajax_load_table_order_html(parameter)
+        {
+            this.addHTMLFileToDOM("./views/table/table_order.html",parameter.destination);
+            return this.createAjaxResponse(null,0,"");
+        }
 }
