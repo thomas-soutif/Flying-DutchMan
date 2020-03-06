@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     $(".resetLocalStorage").click(function () {
         resetLocalStorage();
-        alert("Databse reset to default");
     });
 
     $(".languageSelection").click(function (e) {
@@ -17,28 +16,6 @@ $(document).ready(function () {
     setDefaultLanguageIfNotExist("en");
     setBackgroundColorForLanguageLink("yellow");
     translateAllDOM();
-
-});
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-
-function translate(str){
-    let lang = getCurrentLanguage();
-    let str_lang_to_translate = "translate_to_" + lang;
-    return eval(str_lang_to_translate + "." + str);
-
-}
-
-function ajaxCall(action,parameter){
-
-    return eval("controller_obj" + "." + action + "(" + JSON.stringify(parameter) + ")" + ";" );
-
-}
 
 
 function setCookie(cname,cvalue,exdays) {
@@ -64,36 +41,12 @@ function getCookie(cname) {
     return "";
 }
 
-function checkUserLogin() {
-    if(sessionStorage.getItem("user") == null)
-    {
-        return null;
-    }
-    return sessionStorage.getItem("user");
-}
+
 
 function resetLocalStorage() {
     localStorage.clear();
 }
 
-function setLanguage(lang)
-{
-    sessionStorage.setItem("current_lang",lang);
-}
-
-function setDefaultLanguageIfNotExist(str_lang) {
-    if(sessionStorage.getItem("current_lang") == null)
-    {
-        sessionStorage.setItem("current_lang",str_lang);
-    }
-
-}
-
-function getCurrentLanguage()
-{
-    setDefaultLanguageIfNotExist("en");
-    return sessionStorage.getItem("current_lang");
-}
 function setBackgroundColorForLanguageLink(color) {
 
     let id = "#language_" + getCurrentLanguage();
@@ -114,10 +67,60 @@ function translateAllDOM(mapElement){
     }
 
 }*/
+
+});
+
+function getUrlVars() {
+    let vars = {};
+    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
 function translateAllDOM(){
 
     $('.translate').each(function (index) {
         $(this).text(translate($(this).data("translate-key")));
     })
 
+}
+
+function translate(str){
+    let lang = getCurrentLanguage();
+    let str_lang_to_translate = "translate_to_" + lang;
+    return eval(str_lang_to_translate + "." + str);
+
+}
+
+function getCurrentLanguage()
+{
+    setDefaultLanguageIfNotExist("en");
+    return sessionStorage.getItem("current_lang");
+}
+
+function setLanguage(lang)
+{
+    sessionStorage.setItem("current_lang",lang);
+}
+
+function setDefaultLanguageIfNotExist(str_lang) {
+    if(sessionStorage.getItem("current_lang") == null)
+    {
+        sessionStorage.setItem("current_lang",str_lang);
+    }
+
+}
+
+function ajaxCall(action,parameter){
+
+    return eval("controller_obj" + "." + action + "(" + JSON.stringify(parameter) + ")" + ";" );
+
+}
+function checkUserLogin() {
+    if(sessionStorage.getItem("user") == null)
+    {
+        return null;
+    }
+    return sessionStorage.getItem("user");
 }
