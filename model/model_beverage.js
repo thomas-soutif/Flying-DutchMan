@@ -1,6 +1,6 @@
 function getAllBeverages() {
 
-    let beverages_db = getDatabase(Beverage_en_data);
+    let beverages_db = getDatabase("Beverage_en_data");
 
     let allBeverages = [];
 
