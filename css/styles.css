@@ -107,12 +107,15 @@ body{
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+    height: 60vh;
+    overflow: auto;
 }
 /*order page*/
 .leftside{
     width: 650px;
     float: left;
 }
+
 .items{
     list-style: none;
     overflow: hidden;

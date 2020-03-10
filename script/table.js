@@ -16,7 +16,7 @@ $(document).ready(function () {
             {
                 setTimeout(() => {
                     addListenerForOrderTable();
-                    loadBeverages();
+                    loadBeverages(); // Load initial beverages
                 }, 100);
             }
 
@@ -70,12 +70,14 @@ function updateStatusOfAllTable(tablesInfo)
     }
 }
 
+var currentBevargeAmount = 10;
+
 function loadBeverages() {
     let idBeveragesList = "#beveragesList";
     let response = ajaxCall("ajax_get_all_beverages", null);
     let beverages = response.data;
 
-    for (let i = 0; i < beverages.length; ++i) {
+    for (let i = 0; i < currentBevargeAmount; ++i) {
         let beverage = beverages[i];
         console.log(beverage);
         let beverageHtml =
@@ -86,12 +88,13 @@ function loadBeverages() {
             "<p>" + "Category: " + beverage.category + "</p>" +
             "<p>" + "Alcohol: " + beverage.alcoholStrength + "</p>" +
             "<p>Price: " + beverage.price + " " + "kr" + "</p>" +
-            "<button>order</button>" +
             "</div>" +
             "</li>";
 
         $(idBeveragesList).append(beverageHtml);
     }
+
+    currentBevargeAmount += 10;
 }
 
 function addListenerForOrderTable()
@@ -128,6 +131,12 @@ function addListenerForOrderTable()
 
     $("#openVIP").click(function (event) {
         openArea(event, 'VIPs');
+    });
+
+    $(".tabcontent").scroll( () => {
+        if($(".tabcontent").scrollTop() + $(".tabcontent").innerHeight() + 1 >= $(".tabcontent").prop('scrollHeight')) {
+            loadBeverages();
+        }
     });
 
     function openArea(evt, areaName) {
