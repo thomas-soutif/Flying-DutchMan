@@ -1,11 +1,11 @@
 function getAllBeverages() {
-
-    let beverages_db = getDatabase(Beverage_en_data);
+    let beverages_db = getDatabase("Beverage_en_data");
 
     let allBeverages = [];
 
     for (let i = 0; i < beverages_db.spirits.length; i++) {
-        let beverage = {
+        const beverage = {
+            id: beverages_db.spirits[i].articleid,
             name: beverages_db.spirits[i].name,
             name2: beverages_db.spirits[i].name2,
             category: beverages_db.spirits[i].catgegory,
@@ -28,7 +28,7 @@ function getAllBeverages() {
 }
 
 function getBeveragesByStrength(strength) {
-    let allBeverages = getAllBeverages();
+    const allBeverages = getAllBeverages();
     let beveragesByStrength = [];
 
     for (let i = 0; i < allBeverages.length; i++) {
@@ -39,4 +39,14 @@ function getBeveragesByStrength(strength) {
     }
 
     return beveragesByStrength;
+}
+
+function getBeverageById(beverageId) {
+    const allBeverages = getAllBeverages();
+
+    const beverageById = allBeverages.find(
+        beverage => beverage.id === beverageId
+    );
+
+    return beverageById;
 }

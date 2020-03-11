@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $(".buttonTableBook").click(function () {
         let tableNumber = $(this).data("table-number");
-        let parameter = {"tableNum" : tableNumber,"userId" : 1}
+        let parameter = {"tableNum" : tableNumber,"userId" : 1};
         let response = ajaxCall("ajax_book_table",parameter);
         console.log(response);
         if(!response.error) // Return no error
@@ -14,7 +14,12 @@ $(document).ready(function () {
             let response2 = ajaxCall("ajax_load_table_order_html",parameter);
             if(!response2.error)
             {
-                setTimeout(() => {  addListenerForOrderTable() }, 1);
+                setTimeout(() => {
+                    addListenerForOrderTable();
+                    loadBeverages(); // Load initial beverages
+                    resetTab();
+                    updateTab();
+                }, 100);
             }
 
         } else
@@ -24,10 +29,10 @@ $(document).ready(function () {
         }
 
     });
+
     translateAllDOM();
     checkAndUpdateStatusOfTables();
     $("#menu-table").addClass("active");
-
 });
 
 function checkAndUpdateStatusOfTables()
@@ -67,6 +72,34 @@ function updateStatusOfAllTable(tablesInfo)
     }
 }
 
+var currentBeverageStart = 0;
+var currentBeverageEnd = 10;
+
+function loadBeverages() {
+    let idBeveregesList = "#beveragesList";
+    let response = ajaxCall("ajax_get_all_beverages", null);
+    let beverages = response.data;
+
+    for (let i = currentBeverageStart; i < currentBeverageEnd; ++i) {
+        let beverage = beverages[i];
+        let beverageHtml =
+            "<li draggable=\"true\" ondragstart=\"drag(event)\" id=\"" + beverage.id + "\">" +
+            "<div>" +
+            "<b>" + beverage.name + "</b>" +
+            "<p>" + "Description: " + beverage.name2 + "</p>" +
+            "<p>" + "Category: " + beverage.category + "</p>" +
+            "<p>" + "Alcohol: " + beverage.alcoholStrength + "</p>" +
+            "<p>Price: " + beverage.price + " " + "kr" + "</p>" +
+            "</div>" +
+            "</li>";
+
+        $(idBeveregesList).append(beverageHtml);
+    }
+
+    currentBeverageStart += 10;
+    currentBeverageEnd += 10;
+}
+
 function addListenerForOrderTable()
 {
 
@@ -95,13 +128,18 @@ function addListenerForOrderTable()
         return true;
     });
 
-    $("#openBeers").click(function (event) {
-        console.log("hey");
-        openArea(event, 'Beers');
+    $("#openBeverages").click(function (event) {
+        openArea(event, 'beverages');
     });
 
     $("#openVIP").click(function (event) {
         openArea(event, 'VIPs');
+    });
+
+    $(".tabcontent").scroll( () => {
+        if($(".tabcontent").scrollTop() + $(".tabcontent").innerHeight() + 1 >= $(".tabcontent").prop('scrollHeight')) {
+            loadBeverages();
+        }
     });
 
     function openArea(evt, areaName) {
@@ -121,12 +159,57 @@ function addListenerForOrderTable()
         evt.currentTarget.className += " active";
     }
 
-    function increaseValue(){
-        document.getElementById("numberPlus").stepUp(1);
+}
+
+function updateTab() {
+    const response = ajaxCall("ajax_load_tab", null);
+    const beverages = response.data.tab.items;
+    const totalPrice = response.data.tab.totalPrice;
+
+    let tabHtml = "";
+
+    for (const beverage of beverages) {
+        const beverageHtml =
+            "<div class=\"beverage-tab-container\">" +
+            "<div>" + beverage.name + "</div>" +
+            // "<button onclick=\"\">+</button>" +
+            "<input type=\"number\" value=\"" + beverage.amount + "\">" +
+            // "<button onclick=\"\">-</button>" +
+            "<div>" + beverage.price + "</div>" +
+            "</div>" + "\n";
+        tabHtml += beverageHtml;
     }
 
-    function decreaseValue(){
-        document.getElementById("numberPlus").stepUp(-1);
+    $("#tab-container").html(tabHtml);
+    $("#total-price").text(totalPrice);
+}
+
+// Drag And Drop //
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    let beverageId = event.target.id;
+    event.dataTransfer.setData("text", beverageId);
+}
+
+function drop(event) {
+    let beverageId = event.dataTransfer.getData("text");
+    addBeverageToTab(beverageId);
+}
+
+function addBeverageToTab(beverageId) {
+    let response = ajaxCall("ajax_add_beverage_to_tab_by_id", beverageId);
+    if (response.error === 1) {
+        alert(response.errorMessage);
     }
 
+    updateTab();
+
+}
+
+function resetTab() {
+    ajaxCall("ajax_reset_tab", null);
 }

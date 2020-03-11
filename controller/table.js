@@ -48,19 +48,40 @@ class Table_Controller extends Master_Controller {
 
     }
 
-    async ajax_get_all_beverages() {
-        let beverages = await getAllBeverages();
+    ajax_get_all_beverages() {
+        const beverages = getAllBeverages();
         return this.createAjaxResponse(beverages, 0, "");
     }
 
-    async ajax_get_beverages_by_strength(strength) {
-        let beverages = await getBeveragesByStrength(strength);
+    ajax_get_beverages_by_strength(strength) {
+        const beverages = getBeveragesByStrength(strength);
         return this.createAjaxResponse(beverages, 0, "");
     }
 
     ajax_load_table_order_html(parameter)
-        {
-            this.addHTMLFileToDOM("./views/table/table_order.html",parameter.destination);
-            return this.createAjaxResponse(null,0,"");
+    {
+        this.addHTMLFileToDOM("./views/table/table_order.html",parameter.destination);
+        return this.createAjaxResponse(null,0,"");
+    }
+
+    ajax_load_tab() {
+        const tab = getTab();
+        return this.createAjaxResponse(tab, 0, "");
+    }
+
+    ajax_add_beverage_to_tab_by_id(beverageId) {
+
+        const beverage = getBeverageById(beverageId);
+        if (!beverage) {
+            return this.createAjaxResponse(null, 1, "Beverage not found!");
         }
+
+        addToTab(beverage);
+        return this.createAjaxResponse(null, 0, "");
+    }
+
+    ajax_reset_tab() {
+        resetTabDatabase();
+        return this.createAjaxResponse(null, 0, "");
+    }
 }
