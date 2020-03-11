@@ -135,6 +135,7 @@ body{
     float: right;
     text-align: center;
     width: 30%;
+    height: 600px;
 }
 .orderbtn{
     width: 200px;
@@ -213,4 +214,41 @@ body.modal-showing.closing .info-container .info {
 }
 .click{
     text-decoration: none;
+}
+
+#tabHeader {
+    background-color: #a9cac5;
+    margin: 0;
+    padding: 10px;
+    border: #f1f1f1 solid 1px;
+    color: white;
+}
+
+#tab-area{
+    height: 45vh;
+    border: black solid 2px;
+    overflow: auto;
+}
+
+#tab-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.beverage-tab-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    border-bottom: #f1f1f1 solid 1px;
+    padding-bottom: 2px;
+}
+
+#total-price-heading {
+    font-weight: bold;
+}
+
+input {
+    width: 20px;
 }

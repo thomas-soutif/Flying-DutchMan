@@ -17,6 +17,8 @@ $(document).ready(function () {
                 setTimeout(() => {
                     addListenerForOrderTable();
                     loadBeverages(); // Load initial beverages
+                    resetTab();
+                    updateTab();
                 }, 100);
             }
 
@@ -157,12 +159,57 @@ function addListenerForOrderTable()
         evt.currentTarget.className += " active";
     }
 
-    function increaseValue(){
-        document.getElementById("numberPlus").stepUp(1);
+}
+
+function updateTab() {
+    const response = ajaxCall("ajax_load_tab", null);
+    const beverages = response.data.tab.items;
+    const totalPrice = response.data.tab.totalPrice;
+
+    let tabHtml = "";
+
+    for (const beverage of beverages) {
+        const beverageHtml =
+            "<div class=\"beverage-tab-container\">" +
+            "<div>" + beverage.name + "</div>" +
+            // "<button onclick=\"\">+</button>" +
+            "<input type=\"number\" value=\"" + beverage.amount + "\">" +
+            // "<button onclick=\"\">-</button>" +
+            "<div>" + beverage.price + "</div>" +
+            "</div>" + "\n";
+        tabHtml += beverageHtml;
     }
 
-    function decreaseValue(){
-        document.getElementById("numberPlus").stepUp(-1);
+    $("#tab-container").html(tabHtml);
+    $("#total-price").text(totalPrice);
+}
+
+// Drag And Drop //
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    let beverageId = event.target.id;
+    event.dataTransfer.setData("text", beverageId);
+}
+
+function drop(event) {
+    let beverageId = event.dataTransfer.getData("text");
+    addBeverageToTab(beverageId);
+}
+
+function addBeverageToTab(beverageId) {
+    let response = ajaxCall("ajax_add_beverage_to_tab_by_id", beverageId);
+    if (response.error === 1) {
+        alert(response.errorMessage);
     }
 
+    updateTab();
+
+}
+
+function resetTab() {
+    ajaxCall("ajax_reset_tab", null);
 }
