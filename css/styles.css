@@ -107,8 +107,6 @@ body{
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-    height: 60vh;
-    overflow: auto;
 }
 .tab input[type=text]{
     float: left;
@@ -125,7 +123,6 @@ body{
     width: 650px;
     float: left;
 }
-
 .items{
     list-style: none;
     overflow: hidden;
@@ -153,7 +150,6 @@ h3{
     float: right;
     text-align: center;
     width: 30%;
-    height: 600px;
 }
 .orderbtn{
     width: 200px;
