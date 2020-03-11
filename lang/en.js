@@ -14,5 +14,6 @@ var translate_to_en = {
     "string_SignIn" : "Sing in",
     "string_Username" : "Username",
     "string_Password" : "Password",
-    "sentence_YouAreAlreadyLoginWithTheUserName" : "You are already login with the username"
+    "sentence_YouAreAlreadyLoginWithTheUserName" : "You are already login with the username",
+    "string_Menu" : "Menu"
 };

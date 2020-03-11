@@ -14,5 +14,6 @@ var translate_to_sw = {
     "string_SignIn" : "Logga in",
     "string_Username" : "Användarnamn",
     "string_Password" : "Lösenord",
-    "sentence_YouAreAlreadyLoginWithTheUserName" : "Du loggar in redan med användarnamnet"
+    "sentence_YouAreAlreadyLoginWithTheUserName" : "Du loggar in redan med användarnamnet",
+    "string_Menu" : "Meny"
 };

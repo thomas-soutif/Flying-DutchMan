@@ -85,7 +85,7 @@ body{
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
-.tab button {
+.tablinks{
     background-color: inherit;
     float: left;
     border: none;
@@ -94,11 +94,11 @@ body{
     padding: 14px 16px;
     transition: 0.5s;
 }
-.tab button:hover {
+.tab .tablinks:hover {
     background-color: #a9cac5;
     color: white;
 }
-.tab button.active {
+.tab .tablinks.active {
     background-color: #0dbec5;
     color: white;
 }
@@ -107,6 +107,16 @@ body{
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+.tab input[type=text]{
+    float: left;
+}
+.search-form{
+    float: right;
+    margin: 11px;
+}
+.submit-button{
+    float: left;
 }
 /*order page*/
 .leftside{
@@ -123,7 +133,15 @@ body{
     border: 1px solid #e6e6e6;
     margin: 5px;
 }
-
+h1{
+    font-size: 18px;
+}
+h2{
+    font-size: 16px;
+}
+h3{
+    font-size: 15px;
+}
 .items li p{
     font-size: 12px;
 }
@@ -179,16 +197,16 @@ body.modal-showing.closing .info-container {
     border-radius: 4px;
 
     position: absolute;
-    top: 45%;
-    left: 50%;
+    top: 50%;
+    left: 16%;
 
     transition: top 0.2s ease-out, transform 0.2s ease-out;
 
     box-shadow: 0px 0px 50px 5px #ffffff;
-    transform: translate(-50%, -50%)
-    translateZ(0)
-    scale(0.9)
-    rotateX(60deg);
+    /*transform: translate(-50%, -50%)
+                translateZ(0)
+                scale(0.9)
+                rotateX(60deg);*/
 
     /* Getting the GPU to handle it - the NEW way */
     will-change: top, transform;
