@@ -70,18 +70,18 @@ function updateStatusOfAllTable(tablesInfo)
     }
 }
 
-var currentBevargeAmount = 10;
+var currentBeverageStart = 0;
+var currentBeverageEnd = 10;
 
 function loadBeverages() {
-    let idBeveragesList = "#beveragesList";
+    let idBeveregesList = "#beveragesList";
     let response = ajaxCall("ajax_get_all_beverages", null);
     let beverages = response.data;
 
-    for (let i = 0; i < currentBevargeAmount; ++i) {
+    for (let i = currentBeverageStart; i < currentBeverageEnd; ++i) {
         let beverage = beverages[i];
-        console.log(beverage);
         let beverageHtml =
-            "<li>" +
+            "<li draggable=\"true\" ondragstart=\"drag(event)\" id=\"" + beverage.id + "\">" +
             "<div>" +
             "<b>" + beverage.name + "</b>" +
             "<p>" + "Description: " + beverage.name2 + "</p>" +
@@ -91,10 +91,11 @@ function loadBeverages() {
             "</div>" +
             "</li>";
 
-        $(idBeveragesList).append(beverageHtml);
+        $(idBeveregesList).append(beverageHtml);
     }
 
-    currentBevargeAmount += 10;
+    currentBeverageStart += 10;
+    currentBeverageEnd += 10;
 }
 
 function addListenerForOrderTable()
