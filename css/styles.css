@@ -108,6 +108,14 @@ body{
     border: 1px solid #ccc;
     border-top: none;
 }
+.tabcontentScroll{
+    overflow: scroll;
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 500px;
+}
 .tab input[type=text]{
     float: left;
 }
@@ -122,6 +130,12 @@ body{
 .leftside{
     width: 650px;
     float: left;
+}
+.leftSideScroll{
+    width: 650px;
+    float: left;
+    overflow: scroll;
+    height: 500px;
 }
 .items{
     list-style: none;
@@ -211,7 +225,7 @@ body.modal-showing.closing .info-container {
     border-radius: 4px;
 
     position: absolute;
-    top: 50%;
+    top: 14%;
     left: 16%;
 
     transition: top 0.2s ease-out, transform 0.2s ease-out;
@@ -279,4 +293,32 @@ body.modal-showing.closing .info-container .info {
 
 input {
     width: 20px;
+}
+
+.menuListNameItem{
+    float: left;
+    font-weight: bold;
+}
+.menuListPriceItem{
+
+    font-style: italic;
+}
+.menuListButton{
+    float: right;
+
+}
+#menuList{
+    border: black solid 2px;
+}
+
+.modalInfoTitle{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.itemMenuList{
+    margin-bottom: 2px;
+    margin-top: 2px;
+    border-bottom: #f1f1f1 solid 1px;
+    padding-bottom: 2px;
 }

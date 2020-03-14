@@ -34,7 +34,7 @@ var Menu_data = {
             "temporary_remove": false
         },
         {
-            "article_id": "7218101",
+            "article_id": "509531",
             "price": "146.00",
             "stock": "10",
             "last_modification_date" : "2020-3-10 00:00:00",

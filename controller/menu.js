@@ -11,7 +11,21 @@ class Menu_Controller extends Master_Controller {
         this.end_page();
     }
 
-    test_action(){
-        console.log("I'm an action from Home controller");
+    ajax_getAllMenu(){
+        let menu = getAllMenu();
+        return this.createAjaxResponse(menu, 0, "");
+    }
+
+    ajax_get_all_beverages() {
+        const beverages = getAllBeverages();
+        return this.createAjaxResponse(beverages, 0, "");
+    }
+
+    ajax_get_beverage_byId(parameter){
+        let beverage = getBeverageById(parameter.beverageId);
+        if (!beverage) {
+            return this.createAjaxResponse(null, 1, "Beverage not found!");
+        }
+        return this.createAjaxResponse(beverage, 0, "");
     }
 }
