@@ -151,6 +151,20 @@ h3{
     text-align: center;
     width: 30%;
 }
+
+.rightsideSroll{
+    overflow: scroll;
+    float: right;
+    text-align: center;
+    border: 1px solid #ccc;
+    height: 200px;
+}
+.wraper{
+     float: right;
+     text-align: center;
+     width: 30%;
+     margin: 10px;
+ }
 .orderbtn{
     width: 200px;
     height: 40px;
