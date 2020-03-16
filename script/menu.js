@@ -1,8 +1,7 @@
-var listMenu;
+var obj_ListMenu;
 $(document).ready(function(){
 
     $("#openBeers").click(function (event) {
-        console.log("hey");
         openArea(event, 'Beers');
     });
 
@@ -16,6 +15,12 @@ $(document).ready(function(){
         }
     });
 
+    $(".buttUndo").click(function (event) {
+        obj_ListMenu.undo();
+    });
+    $(".buttRedo").click(function (event) {
+        obj_ListMenu.redo();
+    });
 
 
     loadAndShowMenu();
@@ -48,7 +53,7 @@ function  loadAndShowMenu()
     {
         console.log(response);
         let menu = response.data.menu;
-        listMenu = menu;
+        obj_ListMenu = new ListMenuAjax(menu);
         console.log(menu);
 
         for (let i = 0; i < menu.length; i++) {
@@ -121,7 +126,6 @@ function addListenerForModal() {
 function addListenerForMenuList() {
     $('.deleteItemMenuList').on("click",function (e) {
         e.preventDefault();
-        console.log("tr");
        deleteItemFromMenuList($(this).parent().parent().data("beverageid"));
     });
 
@@ -176,63 +180,9 @@ function allowDrop(event) {
 
 
 function  addBeverageToMenuTab(beverageId) {
-    let response = ajaxCall("ajax_get_beverage_byId", {beverageId : beverageId});
-    let alreadyInMenu = false;
-    if(!response.error) {
-        let beverage = response.data;
-        for (let i =0; i < listMenu.length ; ++i) {
-            if(beverage.id === listMenu[i].allInfo.id)
-            {
-                alreadyInMenu = true;
-            }
-        }
-        if(!alreadyInMenu)
-        {
-            let json = {};
-            json.article_id = beverage.id;
-            json.price = beverage.price;
-            json.stock = "";
-            json.last_modification_date = "";
-            json.last_modification_userId = checkUserLogin();
-            json.temporary_remove = false;
-            json.allInfo = beverage;
-            listMenu.push(json);
-            let menuListHTML =
-                $("<div/>").attr("data-beverageId", json.article_id).attr("class","itemMenuList").append($("<span>").attr("class", "menuListNameItem").append(json.allInfo.name)).append("<br/>").
-                append($("<span>").attr("class", "menuListPriceItem").append(json.price +" SEK")).
-                append($("<span/>").attr("class", "menuListButton").append($("<button>").attr("class", "deleteItemMenuList").append("&times;")));
-
-            $("#menuList").append(menuListHTML);
-
-
-            setTimeout(() => {
-                addListenerForMenuList();
-            }, 100);
-        }
-
-    }
-    else{
-        console.log(response);
-    }
-
-
+            obj_ListMenu.add(beverageId);
 }
 
-
 function deleteItemFromMenuList(beverageId){
-
-    let inMenu = false;
-    let index;
-    for (let i =0; i < listMenu.length ; ++i) {
-        if(String(beverageId) === listMenu[i].allInfo.id)
-        {
-            inMenu = true;
-            index = i;
-        }
-    }
-    if(inMenu){
-        listMenu.splice(index,1);
-        $('*[data-beverageId='+ beverageId + ']').remove();
-    }
-    console.log(listMenu);
+    obj_ListMenu.remove(beverageId);
 }
