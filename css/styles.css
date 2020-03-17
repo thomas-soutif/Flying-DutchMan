@@ -252,3 +252,7 @@ body.modal-showing.closing .info-container .info {
 input {
     width: 20px;
 }
+
+.hidden-beverage-id {
+    display: none;
+}

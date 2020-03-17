@@ -80,8 +80,23 @@ class Table_Controller extends Master_Controller {
         return this.createAjaxResponse(null, 0, "");
     }
 
+    ajax_remove_beverage_from_tab_by_id(beverageId) {
+        removeFromTabById(beverageId);
+        return this.createAjaxResponse(null, 0, "");
+    }
+
     ajax_reset_tab() {
         resetTabDatabase();
+        return this.createAjaxResponse(null, 0, "");
+    }
+
+    ajax_increase_beverage_amount_on_tab(beverageId) {
+        increaseBeverageAmountOnTab(beverageId);
+        return this.createAjaxResponse(null, 0, "");
+    }
+
+    ajax_decrease_beverage_amount_on_tab(beverageId) {
+        decreaseBeverageAmountOnTab(beverageId);
         return this.createAjaxResponse(null, 0, "");
     }
 }

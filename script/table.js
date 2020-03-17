@@ -142,6 +142,7 @@ function addListenerForOrderTable()
         }
     });
 
+
     function openArea(evt, areaName) {
         var i, tabContent, tabLinks;
 
@@ -171,17 +172,77 @@ function updateTab() {
     for (const beverage of beverages) {
         const beverageHtml =
             "<div class=\"beverage-tab-container\">" +
-            "<div>" + beverage.name + "</div>" +
-            // "<button onclick=\"\">+</button>" +
-            "<input type=\"number\" value=\"" + beverage.amount + "\">" +
-            // "<button onclick=\"\">-</button>" +
+            "<div class=\"beverage-tab-name\">" + beverage.name + "</div>" +
+            "<button class=\"increase-button\">+</button>" +
+            "<input type=\"number\" value=\"" + beverage.amount + "\" disabled>" +
+            "<button class=\"decrease-button\">-</button>" +
             "<div>" + beverage.price + "</div>" +
+            "<div class=\"hidden-beverage-id\">" + beverage.id + "</div>" +
+            "<button class=\"delete-button\"> X </button>" +
             "</div>" + "\n";
         tabHtml += beverageHtml;
     }
 
     $("#tab-container").html(tabHtml);
     $("#total-price").text(totalPrice);
+
+    $(".delete-button").click(function (event) {
+        let beverageId = $(this).closest(".beverage-tab-container").find(".hidden-beverage-id").html();
+        removeBeverageFromTab(beverageId);
+    });
+
+    $(".increase-button").click(function (event) {
+        let beverageId = $(this).closest(".beverage-tab-container").find(".hidden-beverage-id").html();
+        increaseBeverageAmount(beverageId);
+    });
+
+    $(".decrease-button").click(function (event) {
+        let beverageId = $(this).closest(".beverage-tab-container").find(".hidden-beverage-id").html();
+        decreaseBeverageAmount(beverageId);
+    });
+}
+
+function increaseBeverageAmount(beverageId) {
+    let response = ajaxCall("ajax_increase_beverage_amount_on_tab", beverageId);
+
+    if (response.error === 1) {
+        alert(response.errorMessage);
+    }
+
+    updateTab();
+}
+
+function decreaseBeverageAmount(beverageId) {
+    let response = ajaxCall("ajax_decrease_beverage_amount_on_tab", beverageId);
+
+    if (response.error === 1) {
+        alert(response.errorMessage);
+    }
+
+    updateTab();
+}
+
+function removeBeverageFromTab(beverageId) {
+    let response = ajaxCall("ajax_remove_beverage_from_tab_by_id", beverageId);
+
+    if (response.error === 1) {
+        alert(response.errorMessage);
+    }
+
+    updateTab();
+}
+
+function addBeverageToTab(beverageId) {
+    let response = ajaxCall("ajax_add_beverage_to_tab_by_id", beverageId);
+    if (response.error === 1) {
+        alert(response.errorMessage);
+    }
+
+    updateTab();
+}
+
+function resetTab() {
+    ajaxCall("ajax_reset_tab", null);
 }
 
 // Drag And Drop //
@@ -200,16 +261,3 @@ function drop(event) {
     addBeverageToTab(beverageId);
 }
 
-function addBeverageToTab(beverageId) {
-    let response = ajaxCall("ajax_add_beverage_to_tab_by_id", beverageId);
-    if (response.error === 1) {
-        alert(response.errorMessage);
-    }
-
-    updateTab();
-
-}
-
-function resetTab() {
-    ajaxCall("ajax_reset_tab", null);
-}
