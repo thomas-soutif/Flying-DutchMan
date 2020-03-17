@@ -80,7 +80,7 @@ function loadAndShowBeverages() {
         let beverageHtml =
             "<li draggable=\"true\" ondragstart=\"drag(event)\" id=\"" + beverage.id + "\">" +
             "<div>" +
-            "<a href='#' class='open-modal click'><h1>"+beverage.name+"</h1></a>" +
+            "<a href='#' class='open-modal click'><h2>"+beverage.name+"</h2></a>" +
             "<p>Price:"+ beverage.price +"kr</p>"+
             "<p>Alchool strength:" + beverage.alcoholStrength + "</p>" +
             "<p>Category :" + beverage.category +" </p>" +
