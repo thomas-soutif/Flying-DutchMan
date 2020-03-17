@@ -6,7 +6,9 @@ class ListAjax{
         future: [{}]
     };
     constructor(ajax) {
-        this.list = ajax;
+        if(ajax === undefined)
+            this.list = [{}];
+        this.list = ajax
     }
     add(){}; // should be override by the children
     remove(){}; // should be override by the children
@@ -39,6 +41,10 @@ class ListAjax{
                 return this.state;
         }
 
+    }
+
+    getList(){
+        return this.list;
     }
 
 }

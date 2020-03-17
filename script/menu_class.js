@@ -3,6 +3,10 @@ class ListMenuAjax extends ListAjax{
 
     constructor(ajax) {
         super();
+        if(ajax === undefined){
+            this.list = [];
+            return
+        }
         this.list = ajax
     }
 
@@ -114,6 +118,9 @@ class ListMenuAjax extends ListAjax{
 
     undoable(action) {
         return super.undoable(action);
+    }
+    getList() {
+        return super.getList();
     }
 }
 

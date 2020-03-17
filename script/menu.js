@@ -22,6 +22,9 @@ $(document).ready(function(){
         obj_ListMenu.redo();
     });
 
+    $("#updateMenuList").click(function (){
+        updateMenuOnDatabase(obj_ListMenu.getList());
+    });
 
     loadAndShowMenu();
     addListenerForMenuList();
@@ -51,10 +54,8 @@ function  loadAndShowMenu()
     let response = ajaxCall("ajax_getAllMenu", null);
     if(!response.error)
     {
-        console.log(response);
         let menu = response.data.menu;
         obj_ListMenu = new ListMenuAjax(menu);
-        console.log(menu);
 
         for (let i = 0; i < menu.length; i++) {
             let menuListHTML =
@@ -65,6 +66,15 @@ function  loadAndShowMenu()
             $("#menuList").append(menuListHTML);
         }
     }
+    else
+    {
+        console.log(response.errorMessage);
+        if(response.error === 1) // empty list
+        {
+            obj_ListMenu = new ListMenuAjax(); // the list should be create
+        }
+    }
+
 }
 
 
@@ -179,10 +189,22 @@ function allowDrop(event) {
 }
 
 
-function  addBeverageToMenuTab(beverageId) {
+function addBeverageToMenuTab(beverageId) {
             obj_ListMenu.add(beverageId);
 }
 
 function deleteItemFromMenuList(beverageId){
     obj_ListMenu.remove(beverageId);
+}
+
+function updateMenuOnDatabase(listMenu) {
+
+    let response = ajaxCall(" ajax_updateMenu",listMenu);
+    if(!response.error)
+    {
+        alert("Menu updating successfully");
+    }
+    else{
+        alert(response.errorMessage);
+    }
 }
