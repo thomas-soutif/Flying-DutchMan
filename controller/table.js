@@ -99,4 +99,24 @@ class Table_Controller extends Master_Controller {
         decreaseBeverageAmountOnTab(beverageId);
         return this.createAjaxResponse(null, 0, "");
     }
+
+    ajax_get_all_beveragesFromMenu(){
+        let menu = getAllMenu();
+        if(menu.menu.length > 0)
+        {
+            let final_json = [];
+            for(let i=0; i < menu.menu.length; i++)
+            {
+                final_json.push(getBeverageById(menu.menu[i].article_id));
+            }
+
+            return this.createAjaxResponse(final_json, 0, "");
+        }
+        else
+        {
+            return this.createAjaxResponse(null,1,"Menu list is empty");
+        }
+
+    }
+
 }

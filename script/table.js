@@ -77,27 +77,35 @@ var currentBeverageEnd = 10;
 
 function loadBeverages() {
     let idBeveregesList = "#beveragesList";
-    let response = ajaxCall("ajax_get_all_beverages", null);
-    let beverages = response.data;
+    let response = ajaxCall("ajax_get_all_beveragesFromMenu", null);
+    if(!response.error)
+    {
+        let beverages = response.data;
+        for (let i = currentBeverageStart; i < currentBeverageEnd; ++i) {
+            let beverage = beverages[i];
+            let beverageHtml =
+                "<li draggable=\"true\" ondragstart=\"drag(event)\" id=\"" + beverage.id + "\">" +
+                "<div>" +
+                "<b>" + beverage.name + "</b>" +
+                "<p>" + "Description: " + beverage.name2 + "</p>" +
+                "<p>" + "Category: " + beverage.category + "</p>" +
+                "<p>" + "Alcohol: " + beverage.alcoholStrength + "</p>" +
+                "<p>Price: " + beverage.price + " " + "kr" + "</p>" +
+                "</div>" +
+                "</li>";
 
-    for (let i = currentBeverageStart; i < currentBeverageEnd; ++i) {
-        let beverage = beverages[i];
-        let beverageHtml =
-            "<li draggable=\"true\" ondragstart=\"drag(event)\" id=\"" + beverage.id + "\">" +
-            "<div>" +
-            "<b>" + beverage.name + "</b>" +
-            "<p>" + "Description: " + beverage.name2 + "</p>" +
-            "<p>" + "Category: " + beverage.category + "</p>" +
-            "<p>" + "Alcohol: " + beverage.alcoholStrength + "</p>" +
-            "<p>Price: " + beverage.price + " " + "kr" + "</p>" +
-            "</div>" +
-            "</li>";
+            $(idBeveregesList).append(beverageHtml);
+        }
 
-        $(idBeveregesList).append(beverageHtml);
+        currentBeverageStart += 10;
+        currentBeverageEnd += 10;
+    }
+    else
+    {
+        console.log(response.errorMessage);
     }
 
-    currentBeverageStart += 10;
-    currentBeverageEnd += 10;
+
 }
 
 function addListenerForOrderTable()
