@@ -377,3 +377,16 @@ body.modal-showing.closing .info-container .info {
     color: #aacac5;
     transition: 0.5s;    
 }
+.deleteMenuItemList{
+    width: 80px; 
+    height: 20px; 
+    border-radius: 5px; 
+    background-color: #fb3a3a; 
+    color: white; 
+    font-size: 10px;
+}
+.deleteMenuItemList:hover{
+    transition: 0.5s;
+    background-color: #ffcccc;
+    color: #000;
+}
