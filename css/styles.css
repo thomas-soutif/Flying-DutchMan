@@ -332,3 +332,48 @@ body.modal-showing.closing .info-container .info {
 .hidden-beverage-id {
     display: none;
 }
+.buttUndo{
+    width: 120px;
+    border-radius: 10px;
+    height: 30px;
+    font-size: 20px;
+    font-family: monospace;
+    background-color: #aacac5;
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+.buttUndo:hover{
+    background-color: #d6d6d6;
+    color: #aacac5;
+    transition: 0.5s;
+}
+.buttRedo{
+    width: 120px;
+    border-radius: 10px;
+    height: 30px;
+    font-size: 20px;
+    font-family: monospace;
+    background-color: #aacac5;
+    color: white;
+    text-decoration: none;
+   }
+.buttRedo:hover{
+    background-color: #d6d6d6;
+    color: #aacac5;
+    transition: 0.5s;
+}   
+#updateMenuList{
+    width: 210px;
+    background-color: #a9cac5;
+    color: white;
+    border-radius: 10px;
+    height: 40px;
+    margin: 10px;
+    font-size: 20px;
+}
+#updateMenuList:hover{
+    background-color: #d6d6d6;
+    color: #aacac5;
+    transition: 0.5s;    
+}
