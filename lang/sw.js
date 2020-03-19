@@ -35,7 +35,8 @@ var translate_to_sw = {
     "string_Undo" : "Ångra",
     "string_Redo" : "Göra om",
     "sentence_UpdateMenu" : "Uppdatera menyn",
-    "string_Delete" : "Radera"
+    "string_Delete" : "Radera",
+    "sentence_welcomeMessage" : "Välkommen till vår online-bar 100% dynamisk! Du kan boka för ett bord och beställa öl och för bartendern kan han hantera menylistan för öl, genom att lägga till eller ta bort några, och ha tillgång till all information."
 
 
 };

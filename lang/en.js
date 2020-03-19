@@ -35,5 +35,6 @@ var translate_to_en = {
     "string_Undo" : "Undo",
     "string_Redo" : "Redo",
     "sentence_UpdateMenu" : "Update the menu",
-    "string_Delete" : "Delete"
+    "string_Delete" : "Delete",
+    "sentence_welcomeMessage" : "Welcome to our online Bar 100 % dynamic ! You can book for a table and order beers and for the bartender he can manage the menu list for beers, by adding or removing some, and have access to all the details informations."
 };
