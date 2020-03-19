@@ -17,9 +17,11 @@ $(document).ready(function(){
 
     $(".buttUndo").click(function (event) {
         obj_ListMenu.undo();
+        translateAllDOM();
     });
     $(".buttRedo").click(function (event) {
         obj_ListMenu.redo();
+        translateAllDOM();
     });
 
     $("#updateMenuList").click(function (){
@@ -29,6 +31,11 @@ $(document).ready(function(){
     loadAndShowMenu();
     addListenerForMenuList();
     loadAndShowBeverages();
+    $("#menu-menu").addClass("active");
+    openArea(null, 'Beers');
+    setTimeout(() => {
+       translateAllDOM();
+    }, 100);
 });
 
 function openArea(evt, areaName) {
@@ -61,7 +68,7 @@ function  loadAndShowMenu()
             let menuListHTML =
                 $("<div/>").attr("data-beverageId", menu[i].article_id).attr("class","itemMenuList").append($("<span>").attr("class", "menuListNameItem").append(menu[i].allInfo.name)).append("<br/>").
                 append($("<span>").attr("class", "menuListPriceItem").append(menu[i].price +" SEK")).
-                append($("<span/>").attr("class", "menuListButton").append($("<button class='deleteItemMenuList'>").append("Delete")));
+                append($("<span/>").attr("class", "menuListButton").append($("<button class='deleteItemMenuList translate' data-translate-key='string_Delete'>").append("Delete")));
 
             $("#menuList").append(menuListHTML);
         }
@@ -74,6 +81,7 @@ function  loadAndShowMenu()
             obj_ListMenu = new ListMenuAjax(); // the list should be create
         }
     }
+    translateAllDOM();
 
 }
 
@@ -91,9 +99,9 @@ function loadAndShowBeverages() {
             "<li draggable=\"true\" ondragstart=\"drag(event)\" id=\"" + beverage.id + "\">" +
             "<div>" +
             "<a href='#' class='open-modal click'><h2>"+beverage.name+"</h2></a>" +
-            "<p>Price:"+ beverage.price +"kr</p>"+
-            "<p>Alchool strength:" + beverage.alcoholStrength + "</p>" +
-            "<p>Category :" + beverage.category +" </p>" +
+            "<p><span class='translate' data-translate-key='string_Price'>Price</span> :"+ beverage.price +"kr</p>"+
+            "<p><span class='translate' data-translate-key='string_AlchoolStrength'>Alchool strength</span> :" + beverage.alcoholStrength + "</p>" +
+            "<p><span class='translate' data-translate-key='string_Category'>Category</span> :" + beverage.category +" </p>" +
             "</div>" +
             "</li>";
 
@@ -104,6 +112,7 @@ function loadAndShowBeverages() {
     currentBeverageEnd += 100;
 
     addListenerForModal();
+    translateAllDOM();
 }
 
 function addListenerForModal() {
@@ -151,20 +160,21 @@ function addBeverageInfoToModal(beverage_id)
         let beverage = response.data;
         let beverageInfoHtml =
             "<h1>"+beverage.name+"</h1>" +
-            "<p><span class='modalInfoTitle'>Price:</span>"+ beverage.price +"kr</p>"+
-            "<p><span class='modalInfoTitle'>Category:</span>"+beverage.category +"</p>"+
-            "<p><span class='modalInfoTitle'>Alchool strength:</span>" + beverage.alcoholStrength + "</p>" +
-            "<p><span class='modalInfoTitle'>Country:</span>"+beverage.country +"</p>"+
-            "<p><span class='modalInfoTitle'>Region:</span>"+beverage.region +"</p>"+
-            "<p><span class='modalInfoTitle'>Producer:</span>"+beverage.producer +"</p>"+
-            "<p><span class='modalInfoTitle'>Provider:</span>"+beverage.provider +"</p>"+
-            "<p><span class='modalInfoTitle'>Production Year:</span>"+beverage.productionYear +"</p>"+
-            "<p><span class='modalInfoTitle'>Packaging:</span>"+beverage. packaging +"</p>"+
-            "<p><span class='modalInfoTitle'>CAP type:</span>"+beverage.capType +"</p>"+
-            "<p><span class='modalInfoTitle'>Is Organic:</span>"+beverage.isOrganic +"</p>"+
-            "<p><span class='modalInfoTitle'>isKosher:</span>"+beverage.isKosher +"</p>";
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Price'>Price</span> : "+ beverage.price +"kr</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Category'>Category</span> : "+beverage.category +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_AlchoolStrength'>Alchool strength</span> : " + beverage.alcoholStrength + "</p>" +
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Country'>Country</span> : "+beverage.country +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Region'>Region</span> : "+beverage.region +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Producer'>Producer</span> : "+beverage.producer +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Provider'>Provider</span> : "+beverage.provider +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_ProductionYear'>Production Year</span> : "+beverage.productionYear +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_Packaging'>Packaging</span> : "+beverage. packaging +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_CAPType'>CAP type</span> : "+beverage.capType +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_IsOrganic'>Is Organic</span> : "+beverage.isOrganic +"</p>"+
+            "<p><span class='modalInfoTitle translate' data-translate-key='string_IsKosher'>isKosher</span> : "+beverage.isKosher +"</p>";
 
         $(".infos").empty().append(beverageInfoHtml);
+        translateAllDOM();
 
     }
     else
@@ -182,6 +192,7 @@ function drag(event) {
 function drop(event) {
     let beverageId = event.dataTransfer.getData("text");
     addBeverageToMenuTab(beverageId);
+
 }
 
 function allowDrop(event) {
@@ -191,6 +202,7 @@ function allowDrop(event) {
 
 function addBeverageToMenuTab(beverageId) {
             obj_ListMenu.add(beverageId);
+            translateAllDOM();
 }
 
 function deleteItemFromMenuList(beverageId){

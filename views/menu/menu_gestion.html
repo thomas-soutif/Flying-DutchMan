@@ -2,10 +2,10 @@
     <div class="leftside">
 
         <div class="tab">
-            <button id="openBeers" class="tablinks">Beers</button>
-            <button id="openVIP" class="tablinks">Special Beverages (VIP only)</button>
+            <button id="openBeers" class="tablinks translate" data-translate-key="string_Beers">Beers</button>
+            <button id="openVIP" class="tablinks translate" data-translate-key="sentence_SpecialBeverage">Special Beverages (VIP only)</button>
             <form class="search-form">
-                <input type="text" placeholder="Search...">
+                <input type="text" class="translate" data-translate-key="string_Search" placeholder="Search...">
             </form>
         </div>
 
@@ -27,58 +27,6 @@
 
         <div id="VIPs" class="tabcontentScroll">
             <ul class="items">
-                <li>
-                    <div>
-                        <h1>Heinken</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <h2>Price: 70kr</h2>
-                        <h3>Amount: 100</h3>
-                        <button>order</button>
-                    </div>
-                </li>
-
-                <li>
-                    <div>
-                        <h1>Carlsberg</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <h2>Price: 80kr</h2>
-                        <h3>Amount: 110</h3>
-                        <button>order</button>
-                    </div>
-                </li>
-
-                <li>
-                    <div>
-                        <h1>Schliz</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <h2>Price: 90kr</h2>
-                        <h3>Amount: 120</h3>
-                        <button>order</button>
-                    </div>
-                </li>
-
-                <li>
-                    <div>
-                        <h1>Pabst Blue Ribbon (PBR)</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <h2>Price: 100kr</h2>
-                        <h3>Amount: 130</h3>
-                        <button>order</button>
-                    </div>
-                </li>
-
-                <li>
-                    <div>
-                        <h1>Lone Star</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <h2>Price: 100kr</h2>
-                        <h3>Amount: 130</h3>
-                        <button>order</button>
-                    </div>
-                </li>
-
-
-
             </ul>
 
 
@@ -87,12 +35,12 @@
     </div>
 
     <div class="rightside" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <h1 style="background-color: #a9cac5; margin: 0; padding: 10px; border: #f1f1f1 solid 1px; color: white;">Menu list</h1>
-        <button class="buttUndo">Undo</button>
-        <button class="buttRedo">Redo</button>
+        <h1 style="background-color: #a9cac5; margin: 0; padding: 10px; border: #f1f1f1 solid 1px; color: white;" class="translate" data-translate-key="sentence_MenuList">Menu list</h1>
+        <button class="buttUndo translate" data-translate-key="string_Undo">Undo</button>
+        <button class="buttRedo translate" data-translate-key="string_Redo">Redo</button>
         <div id="menuList">
         </div>
-        <button id="updateMenuList">Update the menu</button>
+        <button id="updateMenuList" class="translate" data-translate-key="sentence_UpdateMenu">Update the menu</button>
 
 
     </div>

@@ -15,5 +15,27 @@ var translate_to_sw = {
     "string_Username" : "Användarnamn",
     "string_Password" : "Lösenord",
     "sentence_YouAreAlreadyLoginWithTheUserName" : "Du loggar in redan med användarnamnet",
-    "string_Menu" : "Meny"
+    "string_Menu" : "Meny",
+    "string_Beers" : "Öl",
+    "sentence_SpecialBeverage" : "Special drycker (endast VIP)",
+    "string_Search" : "Search",
+    "string_IsKosher" :"Is koscher",
+    "string_IsOrganic" :"Is Ekologisk",
+    "string_CAPType" :"CAP Typ",
+    "string_Packaging" :"Förpackning",
+    "string_ProductionYear" :"Produktionsår",
+    "string_Provider" :"Provider",
+    "string_Producer" :"Producent",
+    "string_Region" :"Område",
+    "string_Country" :"Ursprung",
+    "string_AlchoolStrength" :"Alkohol Halt",
+    "string_Category" :"Varugrupp",
+    "string_Price" : "Pris",
+    "sentence_MenuList" : "Menylista",
+    "string_Undo" : "Ångra",
+    "string_Redo" : "Göra om",
+    "sentence_UpdateMenu" : "Uppdatera menyn",
+    "string_Delete" : "Radera"
+
+
 };
