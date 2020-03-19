@@ -17,11 +17,11 @@ $(document).ready(function(){
 
     $(".buttUndo").click(function (event) {
         obj_ListMenu.undo();
-        translateAllDOM();
+       translateElementInDOM("#menuList");
     });
     $(".buttRedo").click(function (event) {
         obj_ListMenu.redo();
-        translateAllDOM();
+        translateElementInDOM("#menuList");
     });
 
     $("#updateMenuList").click(function (){
@@ -33,9 +33,6 @@ $(document).ready(function(){
     loadAndShowBeverages();
     $("#menu-menu").addClass("active");
     openArea(null, 'Beers');
-    setTimeout(() => {
-       translateAllDOM();
-    }, 100);
 });
 
 function openArea(evt, areaName) {
@@ -81,7 +78,7 @@ function  loadAndShowMenu()
             obj_ListMenu = new ListMenuAjax(); // the list should be create
         }
     }
-    translateAllDOM();
+    translateElementInDOM("#menuList");
 
 }
 
@@ -112,7 +109,8 @@ function loadAndShowBeverages() {
     currentBeverageEnd += 100;
 
     addListenerForModal();
-    translateAllDOM();
+    translateElementInDOM("#Beers");
+
 }
 
 function addListenerForModal() {
@@ -174,7 +172,7 @@ function addBeverageInfoToModal(beverage_id)
             "<p><span class='modalInfoTitle translate' data-translate-key='string_IsKosher'>isKosher</span> : "+beverage.isKosher +"</p>";
 
         $(".infos").empty().append(beverageInfoHtml);
-        translateAllDOM();
+        translateElementInDOM(".infos");
 
     }
     else
@@ -202,7 +200,7 @@ function allowDrop(event) {
 
 function addBeverageToMenuTab(beverageId) {
             obj_ListMenu.add(beverageId);
-            translateAllDOM();
+    translateElementInDOM("#menuList");
 }
 
 function deleteItemFromMenuList(beverageId){

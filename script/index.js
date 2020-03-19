@@ -86,6 +86,13 @@ function translateAllDOM(){
 
 }
 
+function translateElementInDOM(jQueryElement)
+{
+    $(jQueryElement).find(".translate").each(function (index) {
+        $(this).text(translate($(this).data("translate-key")));
+    })
+}
+
 function translate(str){
     let lang = getCurrentLanguage();
     let str_lang_to_translate = "translate_to_" + lang;
