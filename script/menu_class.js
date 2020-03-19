@@ -46,7 +46,7 @@ class ListMenuAjax extends ListAjax{
         let menuListHTML =
             $("<div/>").attr("data-beverageId", json.article_id).attr("class","itemMenuList").append($("<span>").attr("class", "menuListNameItem").append(json.allInfo.name)).append("<br/>").
             append($("<span>").attr("class", "menuListPriceItem").append(json.price +" SEK")).
-            append($("<span/>").attr("class", "menuListButton").append($("<button>").attr("class", "deleteItemMenuList").append("&times;")));
+            append($("<span/>").attr("class", "menuListButton").append($("<button>").attr("class", "deleteItemMenuList").append("Delete")));
 
         $("#menuList").append(menuListHTML);
 

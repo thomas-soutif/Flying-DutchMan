@@ -61,7 +61,7 @@ function  loadAndShowMenu()
             let menuListHTML =
                 $("<div/>").attr("data-beverageId", menu[i].article_id).attr("class","itemMenuList").append($("<span>").attr("class", "menuListNameItem").append(menu[i].allInfo.name)).append("<br/>").
                 append($("<span>").attr("class", "menuListPriceItem").append(menu[i].price +" SEK")).
-                append($("<span/>").attr("class", "menuListButton").append($("<button class='deleteItemMenuList'>").append("Delete X;")));
+                append($("<span/>").attr("class", "menuListButton").append($("<button class='deleteItemMenuList'>").append("Delete")));
 
             $("#menuList").append(menuListHTML);
         }
