@@ -118,5 +118,22 @@ class Table_Controller extends Master_Controller {
         }
 
     }
+    ajax_have_permission_to_view_table(){
+        let username =  checkUserLogin();
+        if(username == null)
+        {
+            return this.createAjaxResponse(null,1,"You must be login with a bartender account to do that.")
+        }
+        let user = getUserDetails(username);
+        console.log(user);
+        if(user.user.role === "bartender" || user.user.role === "manager"){
+            return this.createAjaxResponse(null,0,"");
+        }
+        else
+        {
+            return this.createAjaxResponse(null,2,"You don't have the permission to do that (bartender role needed)");
+        }
+
+    }
 
 }

@@ -20,7 +20,7 @@ $(document).ready(function () {
                     //resetTab();
                     updateTab();
                     openArea(null,"openBeverages");
-                }, 100);
+                }, 150);
             }
 
         } else
@@ -32,6 +32,14 @@ $(document).ready(function () {
     });
 
     $(".buttonViewTable").click(function () {
+
+        let response = ajaxCall("ajax_have_permission_to_view_table",null);
+        if(response.error)
+        {
+            alert(response.errorMessage);
+            return
+        }
+
         let tableNumber = $(this).data("table-number");
         $(".pagecontainer").empty();
         let parameter = {"destination" : ".pagecontainer"};
@@ -44,7 +52,7 @@ $(document).ready(function () {
                 loadBeverages(); // Load initial beverages
                 //resetTab();
                 updateTab();
-            }, 100);
+            }, 150);
         }
 
     });
@@ -171,23 +179,6 @@ function addListenerForOrderTable()
     });
 
 
-    function openArea(evt, areaName) {
-        var i, tabContent, tabLinks;
-
-        tabContent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";
-        }
-
-        tabLinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tabLinks.length; i++) {
-            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-        }
-
-        document.getElementById(areaName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
 }
 
 function updateTab() {
@@ -294,3 +285,19 @@ function drop(event) {
     addBeverageToTab(beverageId);
 }
 
+function openArea(evt, areaName) {
+    var i, tabContent, tabLinks;
+
+    tabContent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    tabLinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(areaName).style.display = "block";
+    evt.currentTarget.className += " active";
+}

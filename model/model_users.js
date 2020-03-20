@@ -20,6 +20,7 @@ function getUserDetails(userName) {
             finalJson.user.lastName = users_data.users[i].last_name;
             finalJson.user.email = users_data.users[i].email;
             finalJson.user.phone = users_data.users[i].phone;
+            finalJson.user.role = users_data.users[i].role;
         }
     }
     let account_data = Account_data;

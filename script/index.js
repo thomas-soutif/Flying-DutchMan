@@ -16,6 +16,7 @@ $(document).ready(function () {
     setDefaultLanguageIfNotExist("en");
     setBackgroundColorForLanguageLink("yellow");
     translateAllDOM();
+    setUsernameInMenu();
 
 
 function setCookie(cname,cvalue,exdays) {
@@ -130,4 +131,12 @@ function checkUserLogin() {
         return null;
     }
     return sessionStorage.getItem("user");
+}
+
+function setUsernameInMenu() {
+    if(checkUserLogin() != null)
+    {
+        console.log("hey")
+        $("#menu-login").removeClass("translate").empty().append(checkUserLogin());
+    }
 }
