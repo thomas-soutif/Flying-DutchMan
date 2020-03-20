@@ -139,6 +139,7 @@ function loadBeverages() {
 function addListenerForOrderTable()
 {
 
+
     $("a.open-modal").on("click",function(e){
         e.preventDefault();
 
