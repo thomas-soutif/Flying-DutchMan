@@ -390,3 +390,6 @@ body.modal-showing.closing .info-container .info {
     background-color: #ffcccc;
     color: #000;
 }
+.buttonViewTable{
+    float: right;
+}

@@ -64,24 +64,24 @@ class Table_Controller extends Master_Controller {
         return this.createAjaxResponse(null,0,"");
     }
 
-    ajax_load_tab() {
-        const tab = getTab();
+    ajax_load_tab(table_num) {
+        const tab = getTab(table_num);
         return this.createAjaxResponse(tab, 0, "");
     }
 
-    ajax_add_beverage_to_tab_by_id(beverageId) {
+    ajax_add_beverage_to_tab_by_id(parameter) {
 
-        const beverage = getBeverageById(beverageId);
+        const beverage = getBeverageById(parameter.beverageId);
         if (!beverage) {
             return this.createAjaxResponse(null, 1, "Beverage not found!");
         }
 
-        addToTab(beverage);
+        addToTab(beverage,parameter.table_num);
         return this.createAjaxResponse(null, 0, "");
     }
 
-    ajax_remove_beverage_from_tab_by_id(beverageId) {
-        removeFromTabById(beverageId);
+    ajax_remove_beverage_from_tab_by_id(parameter) {
+        removeFromTabById(parameter.beverageId,parameter.table_num);
         return this.createAjaxResponse(null, 0, "");
     }
 
@@ -90,13 +90,13 @@ class Table_Controller extends Master_Controller {
         return this.createAjaxResponse(null, 0, "");
     }
 
-    ajax_increase_beverage_amount_on_tab(beverageId) {
-        increaseBeverageAmountOnTab(beverageId);
+    ajax_increase_beverage_amount_on_tab(parameter) {
+        increaseBeverageAmountOnTab(parameter.beverageId,parameter.table_num);
         return this.createAjaxResponse(null, 0, "");
     }
 
-    ajax_decrease_beverage_amount_on_tab(beverageId) {
-        decreaseBeverageAmountOnTab(beverageId);
+    ajax_decrease_beverage_amount_on_tab(parameter) {
+        decreaseBeverageAmountOnTab(parameter.beverageId,parameter.table_num);
         return this.createAjaxResponse(null, 0, "");
     }
 

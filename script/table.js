@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $(".buttonTableBook").click(function () {
         let tableNumber = $(this).data("table-number");
         let parameter = {"tableNum" : tableNumber,"userId" : 1};
@@ -14,11 +13,13 @@ $(document).ready(function () {
             let response2 = ajaxCall("ajax_load_table_order_html",parameter);
             if(!response2.error)
             {
+                actual_table = tableNumber;
                 setTimeout(() => {
                     addListenerForOrderTable();
                     loadBeverages(); // Load initial beverages
-                    resetTab();
+                    //resetTab();
                     updateTab();
+                    openArea(null,"openBeverages");
                 }, 100);
             }
 
@@ -30,11 +31,30 @@ $(document).ready(function () {
 
     });
 
+    $(".buttonViewTable").click(function () {
+        let tableNumber = $(this).data("table-number");
+        $(".pagecontainer").empty();
+        let parameter = {"destination" : ".pagecontainer"};
+        let response2 = ajaxCall("ajax_load_table_order_html",parameter);
+        if(!response2.error)
+        {
+            actual_table = tableNumber;
+            setTimeout(() => {
+                addListenerForOrderTable();
+                loadBeverages(); // Load initial beverages
+                //resetTab();
+                updateTab();
+            }, 100);
+        }
+
+    });
+
+
     translateAllDOM();
     checkAndUpdateStatusOfTables();
     $("#menu-table").addClass("active");
 });
-
+var actual_table;
 function checkAndUpdateStatusOfTables()
 {
     let response = ajaxCall("ajax_get_TablesInformation",null);
@@ -171,9 +191,10 @@ function addListenerForOrderTable()
 }
 
 function updateTab() {
-    const response = ajaxCall("ajax_load_tab", null);
-    const beverages = response.data.tab.items;
-    const totalPrice = response.data.tab.totalPrice;
+    const response = ajaxCall("ajax_load_tab", actual_table);
+    console.log(response.data);
+    const beverages = response.data.items;
+    const totalPrice = response.data.totalPrice;
 
     let tabHtml = "";
 
@@ -211,7 +232,8 @@ function updateTab() {
 }
 
 function increaseBeverageAmount(beverageId) {
-    let response = ajaxCall("ajax_increase_beverage_amount_on_tab", beverageId);
+    let parameter = {beverageId : beverageId, table_num: actual_table}
+    let response = ajaxCall("ajax_increase_beverage_amount_on_tab", parameter);
 
     if (response.error === 1) {
         alert(response.errorMessage);
@@ -221,7 +243,8 @@ function increaseBeverageAmount(beverageId) {
 }
 
 function decreaseBeverageAmount(beverageId) {
-    let response = ajaxCall("ajax_decrease_beverage_amount_on_tab", beverageId);
+    let parameter = {beverageId : beverageId, table_num: actual_table}
+    let response = ajaxCall("ajax_decrease_beverage_amount_on_tab", parameter);
 
     if (response.error === 1) {
         alert(response.errorMessage);
@@ -231,7 +254,8 @@ function decreaseBeverageAmount(beverageId) {
 }
 
 function removeBeverageFromTab(beverageId) {
-    let response = ajaxCall("ajax_remove_beverage_from_tab_by_id", beverageId);
+    let parameter = {beverageId : beverageId, table_num: actual_table}
+    let response = ajaxCall("ajax_remove_beverage_from_tab_by_id", parameter);
 
     if (response.error === 1) {
         alert(response.errorMessage);
@@ -241,7 +265,8 @@ function removeBeverageFromTab(beverageId) {
 }
 
 function addBeverageToTab(beverageId) {
-    let response = ajaxCall("ajax_add_beverage_to_tab_by_id", beverageId);
+    let parameter = {beverageId : beverageId, table_num : actual_table}
+    let response = ajaxCall("ajax_add_beverage_to_tab_by_id", parameter);
     if (response.error === 1) {
         alert(response.errorMessage);
     }
