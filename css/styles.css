@@ -173,6 +173,17 @@ body{
     width: 30%;
     height: 600px;
 }
+.rightsideHome{
+    overflow: hidden;
+    float: right;
+    text-align: center;
+    width: 70%;
+    height: 600px;
+    margin:56px;
+}
+.homeWelcome{
+    display: flex;
+}
 .orderbtn{
     width: 200px;
     height: 40px;

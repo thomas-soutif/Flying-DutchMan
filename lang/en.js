@@ -39,5 +39,6 @@ var translate_to_en = {
     "sentence_welcomeMessage" : "Welcome to our online Bar 100 % dynamic ! You can book for a table and order beers and for the bartender he can manage the menu list for beers, by adding or removing some, and have access to all the details informations.",
     "string_MenuManagement" : "Menu Management",
     "string_Order" : "Order",
-    "string_Total" : "Total"
+    "string_Total" : "Total",
+    "sentence_MenuOfDay" : "Menu of the day"
 };

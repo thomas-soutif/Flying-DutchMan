@@ -9,7 +9,7 @@ class Master_Controller
 
 
     end_page() {
-        this.addHTMLFileToDOM("./views/footer.html","body");
+        this.addHTMLFileToDOM("./views/footer.html","html");
     }
 
 

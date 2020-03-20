@@ -39,7 +39,8 @@ var translate_to_sw = {
     "sentence_welcomeMessage" : "Välkommen till vår online-bar 100% dynamisk! Du kan boka för ett bord och beställa öl och för bartendern kan han hantera menylistan för öl, genom att lägga till eller ta bort några, och ha tillgång till all information.",
     "string_MenuManagement" : "Menyhantering",
     "string_Order" : "Beställa",
-    "string_Total" : "Total"
+    "string_Total" : "Total",
+    "sentence_MenuOfDay" : "Dagens meny"
 
 
 };

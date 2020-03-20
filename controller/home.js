@@ -14,4 +14,17 @@ class Home_Controller extends Master_Controller {
     test_action(){
         console.log("I'm an action from Home controller");
     }
+
+    ajax_getAllMenu(){
+        let menu = getAllMenu();
+        if(menu.menu.length > 0)
+        {
+            return this.createAjaxResponse(menu, 0, "");
+        }
+        else
+        {
+            return this.createAjaxResponse(null,1,"Menu list is empty");
+        }
+
+    }
 }
