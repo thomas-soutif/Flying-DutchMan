@@ -1,23 +1,12 @@
 $(document).ready(function () {
 
-    $(".resetLocalStorage").click(function () {
-        resetLocalStorage();
-    });
-
-    $(".languageSelection").click(function (e) {
-        e.preventDefault();
-        let lang = $(this).data("lang");
-        setLanguage(lang);
-        translateAllDOM();
-        setBackgroundColorForLanguageLink("yellow");
-
-    });
+   addListenerForIndex();
 
     setDefaultLanguageIfNotExist("en");
     setBackgroundColorForLanguageLink("yellow");
     translateAllDOM();
     setUsernameInMenu();
-
+    setTimeout(addListenerForIndex,200);
 
 function setCookie(cname,cvalue,exdays) {
     var d = new Date();
@@ -42,11 +31,12 @@ function getCookie(cname) {
     return "";
 }
 
-
+});
 
 function resetLocalStorage() {
     localStorage.clear();
 }
+
 
 function setBackgroundColorForLanguageLink(color) {
 
@@ -58,18 +48,22 @@ function setBackgroundColorForLanguageLink(color) {
     $(id).css("background-color",color);
 }
 
-/*
-function translateAllDOM(mapElement){
+function addListenerForIndex() {
 
-    console.log(mapElement);
-    for (let i = 0; i < mapElement.map.length; i++)
-    {
-        $(mapElement.map[i].element).text(translate(mapElement.map[i].key));
-    }
+    $(".resetLocalStorage").click(function () {
+        resetLocalStorage();
+    });
 
-}*/
+    $(".languageSelection").click(function (e) {
+        e.preventDefault();
+        let lang = $(this).data("lang");
+        setLanguage(lang);
+        translateAllDOM();
+        setBackgroundColorForLanguageLink("yellow");
 
-});
+    });
+
+}
 
 function getUrlVars() {
     let vars = {};
@@ -140,3 +134,4 @@ function setUsernameInMenu() {
         $("#menu-login").removeClass("translate").empty().append(checkUserLogin());
     }
 }
+
