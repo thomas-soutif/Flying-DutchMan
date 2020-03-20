@@ -1,7 +1,26 @@
 $(document).ready(function () {
 
+    $('#a-logout').click(function () {
+        sessionStorage.removeItem("user");
+
+    });
+    translateAllDOM();
+    tryAddUserNameText();
+    $("#menu-login").addClass("active");
+    setTimeout(addListener,200);
+});
+
+function tryAddUserNameText() {
+    let user = checkUserLogin();
+    if(checkUserLogin() != null)
+    {
+        $('#userNameInfo').text(user);
+    }
+}
+
+
+function addListener(){
     $("#button-login").click(function (e) {
-        e.preventDefault();
         let user= sessionStorage.getItem("user");
         if (user != null) {
             alert("Welcome again " + user);
@@ -22,20 +41,4 @@ $(document).ready(function () {
             }
         }
     });
-
-    $('#a-logout').click(function () {
-        sessionStorage.removeItem("user");
-
-    });
-    translateAllDOM();
-    tryAddUserNameText();
-    $("#menu-login").addClass("active");
-});
-
-function tryAddUserNameText() {
-    let user = checkUserLogin();
-    if(checkUserLogin() != null)
-    {
-        $('#userNameInfo').text(user);
-    }
 }

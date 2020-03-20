@@ -13,8 +13,8 @@ var Users_data = {
         {
             "user_id": "101",
             "credentials": "3",
-            "password": "bar",
-            "username": "bar",
+            "password": "bartender",
+            "username": "bartender",
             "first_name": "Kevin",
             "last_name": "Valerio",
             "email": "test@it.uu.se",
@@ -25,8 +25,8 @@ var Users_data = {
         {
             "user_id": "2",
             "credentials": "0",
-            "password": "b690bc2447d40ea8a6f78345eb979a28",
-            "username": "jorass",
+            "password": "user",
+            "username": "user",
             "first_name": "Jory",
             "last_name": "Assies",
             "email": "jory.assies@it.uu.se",

@@ -20,7 +20,7 @@ $(document).ready(function () {
         console.log("hey");
         openArea(event, 'Update');
     });
-
+    $("#menu-bar").addClass("active");
 });
 
 function openArea(evt, areaName) {
