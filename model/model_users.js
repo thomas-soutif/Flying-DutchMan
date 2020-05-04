@@ -6,6 +6,7 @@
  * Author: Yu-Lun Chang, Thomas Soutif
  */
 
+
 function allUserNames() {  // Get the user name.
     var nameCollect = [];
     for (i = 0; i < Users_data.users.length; i++) {
@@ -83,3 +84,7 @@ function loginVerification(username,password)  // Check if the password is match
     }
     return false;  // No users find with the parameter given.
 }
+
+//************
+// END of file model_users.js
+//************
