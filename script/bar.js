@@ -1,5 +1,15 @@
+/**
+ * File: bar.js
+ *
+ * This file contains the javascript necessary to provide functionality on the bar page.
+ *
+ * Author: Thomas Soutif
+ */
+
+// Function called when view was loaded
 $(document).ready(function () {
 
+    // Add click handlers for buttons //
 
     $("#openAllOrder").click(function (event) {
         console.log("hey");
@@ -23,6 +33,9 @@ $(document).ready(function () {
     $("#menu-bar").addClass("active");
 });
 
+/**
+ * Open certain area by adjusting css classes
+ */
 function openArea(evt, areaName) {
     var i, tabContent, tabLinks;
 
