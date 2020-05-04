@@ -38,5 +38,5 @@ class Home_Controller extends Master_Controller {
 }
 
 //************
-// END of file Spirograph.js
+// END of file home.js
 //************
