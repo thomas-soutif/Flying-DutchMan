@@ -51,3 +51,7 @@ function addListener(){
         }
     });
 }
+
+//************
+// END of file login.js
+//************
