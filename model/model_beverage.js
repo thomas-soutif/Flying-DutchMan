@@ -88,3 +88,7 @@ function getBeverageById(beverageId) {
 
     return beverageById;
 }
+
+//************
+// END of file model_beverage.js
+//************

@@ -146,3 +146,7 @@ function decreaseBeverageAmountOnTab(beverageId,table_num) {
 function resetTabDatabase() {
     resetDatabase("Tab_data");
 }
+
+//************
+// END of file model_tab.js
+//************

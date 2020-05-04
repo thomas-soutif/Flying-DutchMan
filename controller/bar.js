@@ -29,3 +29,7 @@ class Bar_Controller extends Master_Controller {
     }
 
 }
+
+//************
+// END of file bar.js
+//************

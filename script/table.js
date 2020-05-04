@@ -374,3 +374,7 @@ function openArea(evt, areaName) {
     document.getElementById(areaName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+//************
+// END of file table.js
+//************
