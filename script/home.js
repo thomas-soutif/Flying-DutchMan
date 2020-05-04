@@ -6,6 +6,7 @@
  * Author: Yu-Lun Chang, Thomas Soutif
  */
 
+
 $(document).ready(function () {
     translateAllDOM();
     $("#menu-home").addClass("active");
@@ -35,5 +36,8 @@ function  loadAndShowMenu()
         }
     }
     translateElementInDOM("#menuList");  // Deal with multi-language.
-
 }
+
+//************
+// END of file home.js
+//************
