@@ -32,8 +32,8 @@ class Login_Controller extends Master_Controller {
 
     ajax_try_login(parameter){
         console.log(parameter);
-        let bool = loginVerification(String(parameter.userName),String(parameter.password));
-        if(bool)
+        let bool = loginVerification(String(parameter.userName),String(parameter.password));  // Check that this user is exist and password is correct.
+        if(bool)  // If the verification pass.
         {
             let user = getUserDetails(String(parameter.userName));
             sessionStorage.setItem("user",user.user.userName);
@@ -48,5 +48,5 @@ class Login_Controller extends Master_Controller {
 }
 
 //************
-// END of file Spirograph.js
+// END of file login.js
 //************
