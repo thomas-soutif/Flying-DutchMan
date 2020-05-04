@@ -6,6 +6,7 @@
  * Author: Yu-Lun Chang, Thomas Soutif
  */
 
+
 class Home_Controller extends Master_Controller {
 
     constructor() {
@@ -33,6 +34,9 @@ class Home_Controller extends Master_Controller {
         {
             return this.createAjaxResponse(null,1,"Menu list is empty");  // If the menu is empty.
         }
-
     }
 }
+
+//************
+// END of file Spirograph.js
+//************
