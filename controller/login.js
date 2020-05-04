@@ -1,17 +1,26 @@
+/**
+ * File: login.js
+ *
+ * This file contains the javaScript to store or delete cookie.
+ * Users don't need to login again if they stored cookie.
+ *
+ * Author: Yu-Lun Chang, Thomas Soutif
+ */
+
 class Login_Controller extends Master_Controller {
 
     constructor() {
         super();
     }
 
-    index(){ // The default function call if there is no action on the page (usually call only to load the page once
+    index(){  // The default function call if there is no action on the page (usually call only to load the page once).
         console.log("i'm in login controller")
-        this.start_page("login");
+        this.start_page("login");  // The page after login.
         if(sessionStorage.getItem("user") == null)
         {
-            this.addHTMLFileToDOM("./views/login/login_form.html","body");
+            this.addHTMLFileToDOM("./views/login/login_form.html","body");  // Create this user.
         }
-        else
+        else  // If this user already exist.
         {
             this.addHTMLFileToDOM('./views/login/already_login.html',"body");
         }
