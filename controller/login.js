@@ -7,6 +7,7 @@
  * Author: Yu-Lun Chang, Thomas Soutif
  */
 
+
 class Login_Controller extends Master_Controller {
 
     constructor() {
@@ -45,3 +46,7 @@ class Login_Controller extends Master_Controller {
 
     }
 }
+
+//************
+// END of file Spirograph.js
+//************
