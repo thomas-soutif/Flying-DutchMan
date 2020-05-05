@@ -1,6 +1,19 @@
+/**
+ * File: model_menu.js
+ *
+ * This file contain all the function use to manipulate the database relate to the menu functionality
+ *
+ * Version 1.5
+ * Author: Thomas SOUTIF
+ */
+
+
+
+
+//Get all the menu
 function getAllMenu()
 {
-    let final_menu = {menu :[]};
+    let final_menu = {menu :[]}; // Initialize the variable who will be return (ensure that it's an json form)
     let menu_data = getDatabase("Menu_data");
     for (let i = 0; i < menu_data.menu.length; i++) {
         let beverage = getBeverageById(menu_data.menu[i].article_id);
@@ -11,6 +24,7 @@ function getAllMenu()
    return final_menu;
 }
 
+//Update all the menu with the new data's
 function updateAllMenu(menuList)
 {
     let today = new Date();
@@ -34,3 +48,7 @@ function updateAllMenu(menuList)
     updateDatabase("Menu_data",final_json);
     return 0;
 }
+
+//************
+// END of file model_menu.js
+//************

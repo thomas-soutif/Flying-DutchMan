@@ -1,40 +1,57 @@
+/**
+ * File: menu.js
+ *
+ * This file contains the javascript necessary to provide functionality on the management of the menu page.
+ *
+ * Version 1.5
+ * Author: Thomas Soutif, Jonathan Stahl
+ */
+
+
+
+
 var obj_ListMenu;
+// Function called when view was loaded
 $(document).ready(function(){
 
+    //When we click on the Beers tab, we show the right content
     $("#openBeers").click(function (event) {
         openArea(event, 'Beers');
     });
-
+    //When we click on the Vip tab, we show the right content
     $("#openVIP").click(function (event) {
         openArea(event, 'VIPs');
     });
-
+    //When the scroll arrive to the end, we load more beers. So we don't have to load all the beers from the database from the beginning
     $(".tabcontentScroll").scroll( () => {
         if($(".tabcontentScroll").scrollTop() + $(".tabcontentScroll").innerHeight() + 1 >= $(".tabcontentScroll").prop('scrollHeight')) {
             loadAndShowBeverages();
         }
     });
-
+    //When we click on the undo button
     $(".buttUndo").click(function (event) {
         obj_ListMenu.undo();
-       translateElementInDOM("#menuList");
+       translateElementInDOM("#menuList"); // translate the content of the menu in the current language
     });
+    //When we click on the redo button
     $(".buttRedo").click(function (event) {
         obj_ListMenu.redo();
         translateElementInDOM("#menuList");
     });
-
+    //When we click on update the menu, we save it in the database
     $("#updateMenuList").click(function (){
         updateMenuOnDatabase(obj_ListMenu.getList());
     });
-
+    //When the page load, we load and show the menu, then add the listener relate to it
     loadAndShowMenu();
     addListenerForMenuList();
+    //Same but for the beverage list
     loadAndShowBeverages();
     $("#menu-menu").addClass("active");
-    openArea(null, 'Beers');
+    openArea(null, 'Beers'); // By default we open the list of beer (so we don't have to click on the tab)
 });
 
+// Open the tab content give by name
 function openArea(evt, areaName) {
     var i, tabContent, tabLinks;
 
@@ -52,7 +69,7 @@ function openArea(evt, areaName) {
     evt.currentTarget.className += " active";
 }
 
-
+// Take the menu from the database and show it
 function  loadAndShowMenu()
 {
     let response = ajaxCall("ajax_getAllMenu", null);
@@ -84,7 +101,9 @@ function  loadAndShowMenu()
 
 
 var currentBeverageStart = 0;
-var currentBeverageEnd = 100;
+var currentBeverageEnd = 100; // Maximum beverage show in one time
+
+//Take the beverage from database and show it
 function loadAndShowBeverages() {
     let response = ajaxCall("ajax_get_all_beverages", null);
     let beverages = response.data;
@@ -113,6 +132,9 @@ function loadAndShowBeverages() {
 
 }
 
+/**
+ * Add some event handlers to html elements
+ */
 function addListenerForModal() {
     $("a.open-modal").on("click",function(e){
         e.preventDefault();
@@ -140,6 +162,9 @@ function addListenerForModal() {
     });
 }
 
+/**
+ * Add some event handlers to html elements
+ */
 function addListenerForMenuList() {
     $('.deleteItemMenuList').on("click",function (e) {
         e.preventDefault();
@@ -149,7 +174,7 @@ function addListenerForMenuList() {
 }
 
 
-
+//When we click on a beverage to have more information's, load from the database and show the details about the beer in the modal
 function addBeverageInfoToModal(beverage_id)
 {
     let response = ajaxCall("ajax_get_beverage_byId", {beverageId : beverage_id});
@@ -181,12 +206,13 @@ function addBeverageInfoToModal(beverage_id)
     }
 
 }
-
+//When we drag a beer from the beer list
 function drag(event) {
     let beverageId = event.target.id;
     event.dataTransfer.setData("text", beverageId);
 }
 
+//When we drop a beer, store it to the actual menu list and add it in the right div
 function drop(event) {
     let beverageId = event.dataTransfer.getData("text");
     addBeverageToMenuTab(beverageId);
@@ -197,16 +223,18 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
-
+//Add a beverage to the menu tab (only in local, no update in the database)
 function addBeverageToMenuTab(beverageId) {
             obj_ListMenu.add(beverageId);
     translateElementInDOM("#menuList");
 }
 
+// Delete a beverage from the menu tab (only local).
 function deleteItemFromMenuList(beverageId){
     obj_ListMenu.remove(beverageId);
 }
 
+//Update the list menu to the database
 function updateMenuOnDatabase(listMenu) {
 
     let response = ajaxCall(" ajax_updateMenu",listMenu);
@@ -218,3 +246,8 @@ function updateMenuOnDatabase(listMenu) {
         alert(response.errorMessage);
     }
 }
+
+
+//************
+// END of file menu.js
+//********

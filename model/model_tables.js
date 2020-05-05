@@ -1,3 +1,15 @@
+/**
+ * File: model_tables.js
+ *
+ * This file contain all the function use to manipulate the databases relate to the table functionality
+ *
+ * Version 1.5
+ * Author: Thomas SOUTIF
+ */
+
+
+
+// Book a table to ensure that no one can book it after
 function bookTableByNum(tableNum,userId)
 {
 
@@ -23,9 +35,14 @@ function bookTableByNum(tableNum,userId)
     return 2;
 }
 
+//Return the database of the table informations.
 function getAllTablesInformations()
 {
 
     return getDatabase("Table_informations_data");
 
 }
+
+//************
+// END of file model_tables.js
+//************

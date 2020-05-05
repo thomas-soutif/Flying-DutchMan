@@ -1,6 +1,18 @@
+/**
+ * File: generic_class.js
+ *
+ * This file contain all the generic class use in the website.
+ *
+ * Version 1.0
+ * Author: Thomas SOUTIF
+ */
+
+
+
+// Give the generic class to create a list, should be use everytime we want to create a new list to ensure the genericity
 class ListAjax{
-    list = [{}];
-    state = {
+    list = [{}]; // final list content
+    state = { // Contain the state of element , use by the undo redo
         past : [{}],
         present: [{}],
         future: [{}]
@@ -15,6 +27,7 @@ class ListAjax{
     undo(){}; // should be override by the children
     redo(){}; // should be override by the children
 
+    // Give the generic function to make an undo redo, so the developer don't have to implement it
     undoable(action){
         switch (action) {
             case 'UNDO':
@@ -43,8 +56,14 @@ class ListAjax{
 
     }
 
+    //Return the current list
     getList(){
         return this.list;
     }
 
 }
+
+
+//************
+// END of file generic_class.js
+//************

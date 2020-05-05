@@ -1,3 +1,11 @@
+/**
+ * File: menu_class.js
+ *
+ * This file contains the class for creating a list for the menu. It's extend the methods from ListAjax to provide the methods to use
+ * The function to add, remove, undo or redo are so custom.
+ * Author: Thomas Soutif
+ */
+
 class ListMenuAjax extends ListAjax{
     list = [{}];
 
@@ -124,3 +132,6 @@ class ListMenuAjax extends ListAjax{
     }
 }
 
+//************
+// END of file menu_class.js
+//********
