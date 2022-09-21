@@ -16,9 +16,13 @@ The application can be switch between English and Swedish. The translation is fu
 ## Run it
 Be sure to execute a HTTP server in local. With Python for example : python3 -m http.server
 
-Structure of the page : To access a page you just have to change the controller parameter (who is url) and the action if there is one. 
-Example : http://localhost:8000/index.html?url=Home to access to the main page (controll by the Home controller)
-          http://localhost:8000/index.html?url=Home&action=tryToLogin to access to the tryToLogin() function of the Home controller
+Structure of the page : To access a page you just have to change the controller parameter (who is url) and the action if there is one.
+
+Example : 
+
+http://localhost:8000/index.html?url=Home to access to the main page (controll by the Home controller)
+
+http://localhost:8000/index.html?url=Home&action=tryToLogin to access to the tryToLogin() function of the Home controller
           
 
 ## Translation module
